@@ -1,0 +1,7 @@
+{
+  "layers": 3,
+  "errorRate": 0.2,
+  "correlation": 0.45,
+  "particles": 800,
+  "seed": 42
+}

@@ -1,0 +1,18 @@
+{
+  "name": "plausible-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter \"@plausible/*\" --parallel dev",
+    "dev:web": "pnpm --filter @plausible/web dev",
+    "dev:live": "pnpm --filter @plausible/live dev",
+    "build": "pnpm --filter @plausible/content build && pnpm --filter @plausible/live build && pnpm --filter @plausible/web build",
+    "typecheck": "pnpm -r --parallel typecheck",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.0",
+    "typescript": "^5.7.3"
+  }
+}

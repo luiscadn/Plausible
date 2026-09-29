@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #070A0F;
+  --color-surface: #0E141C;
+  --color-line: #1C2633;
+  --color-text: #E6EDF3;
+  --color-muted: #7D8B99;
+  --color-truth: #2DD4BF;
+  --color-false: #FF5A5F;
+  --color-uncertain: #F5B544;
+
+  --font-display: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+}
+
+:root {
+  --bg: #070A0F;
+  --surface: #0E141C;
+  --line: #1C2633;
+  --text: #E6EDF3;
+  --muted: #7D8B99;
+  --truth: #2DD4BF;
+  --false: #FF5A5F;
+  --uncertain: #F5B544;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle background grain simulation */
+.bg-grain {
+  background-image: radial-gradient(rgba(45, 212, 191, 0.04) 1px, transparent 1px),
+    radial-gradient(rgba(255, 90, 95, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+}
+
+/* Glow effects */
+.glow-truth {
+  box-shadow: 0 0 24px -4px rgba(45, 212, 191, 0.35);
+}
+
+.glow-false {
+  box-shadow: 0 0 24px -4px rgba(255, 90, 95, 0.35);
+}
+
+.glow-ambient {
+  box-shadow: 0 0 40px -10px rgba(45, 212, 191, 0.15);
+}
+
+/* ECG pulse animation */
+@keyframes ecg-scan {
+  0% {
+    stroke-dashoffset: 600;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-ecg {
+  stroke-dasharray: 600;
+  animation: ecg-scan 2.8s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-ecg {
+    animation: none !important;
+  }
+}

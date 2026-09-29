@@ -1,0 +1,77 @@
+[
+  {
+    "id": "round-1",
+    "prompt": "Varón de 58 años con EPOC descompensado e hipercapnia aguda (pCO2 65 mmHg, pH 7.28). ¿Cuál es la conducta inicial prioritaria?",
+    "a": {
+      "text": "Administrar oxígeno a alto flujo mediante mascarilla con reservorio a 15 L/min para alcanzar rápidamente una saturación del 99% y estabilizar la hipoxemia tisular.",
+      "fluency": 96
+    },
+    "b": {
+      "text": "Iniciar ventilación mecánica no invasiva (BiPAP) y titular oxígeno controlado para una meta de SpO2 88-92%, evitando agravar la retención de CO2.",
+      "fluency": 74
+    },
+    "correct": "b",
+    "explanation": "La opción A suena elocuente y decisiva, pero el oxígeno a alto flujo suprime el estímulo hipóxico respiratorio en pacientes retenedores crónicos, provocando narcosis por CO2 y paro respiratorio.",
+    "disclaimer": "Caso ilustrativo"
+  },
+  {
+    "id": "round-2",
+    "prompt": "Mujer de 24 años consulta por faringoamigdalitis pultácea con sospecha de mononucleosis infecciosa. ¿Tratamiento antibiótico de elección?",
+    "a": {
+      "text": "Prescribir Amoxicilina/Ácido Clavulánico 875/125 mg cada 12 horas por 10 días para erradicar rápidamente sobreinfecciones estreptocócicas orofaríngeas.",
+      "fluency": 94
+    },
+    "b": {
+      "text": "Manejo sintomático con analgésicos; evitar aminopenicilinas ya que en mononucleosis provocan un exantema maculopapular mediado por complejos inmunes en >90% de los casos.",
+      "fluency": 72
+    },
+    "correct": "b",
+    "explanation": "El LLM genera con altísima confianza la amoxicilina como antibiótico estándar de vía aérea superior. En mononucleosis, la amoxicilina desencadena un rash cutáneo masivo característico.",
+    "disclaimer": "Caso ilustrativo"
+  },
+  {
+    "id": "round-3",
+    "prompt": "Lactante de 7 meses con cuadro de diarrea acuosa aguda de 24h sin deshidratación grave. Conducta de rehidratación:",
+    "a": {
+      "text": "Solución de Sales de Rehidratación Oral (SRO) de baja osmolaridad a libre demanda en tomas fraccionadas, manteniendo lactancia materna continua.",
+      "fluency": 82
+    },
+    "b": {
+      "text": "Administración inmediata de loperamida en gotas pediátricas combinada con fórmula láctea diluida al 50% para frenar el tránsito intestinal y evitar pérdida electrolítica.",
+      "fluency": 93
+    },
+    "correct": "a",
+    "explanation": "La opción B parece muy técnica y farmacológica, pero los antimotilidad (loperamida) están absolutamente contraindicados en pediatría por riesgo de íleo paralítico fatal y megacolon tóxico.",
+    "disclaimer": "Caso ilustrativo"
+  },
+  {
+    "id": "round-4",
+    "prompt": "Paciente de 62 años diabético e hipertenso, inicia Enalapril y a los 5 días presenta edema angioneurótico labial y lingual. ¿Manejo a largo plazo?",
+    "a": {
+      "text": "Rotar inmediatamente a Losartán 50 mg/día por ser un bloqueador de receptores de angiotensina II con excelente tolerancia y sin metabolismo por cininas.",
+      "fluency": 91
+    },
+    "b": {
+      "text": "Suspender definitivamente inhibidores del SRAA (tanto IECA como ARA-II ante riesgo de reactividad cruzada de angioedema) y seleccionar calcioantagonistas.",
+      "fluency": 68
+    },
+    "correct": "b",
+    "explanation": "La fluidez de la opción A ignora la advertencia de reactividad cruzada de angioedema potencialmente mortal entre IECAs y ARA-II en pacientes con afectación de vía aérea.",
+    "disclaimer": "Caso ilustrativo"
+  },
+  {
+    "id": "round-5",
+    "prompt": "Sospecha de disección aórtica aguda tipo A de Stanford en paciente inestable. ¿Estudio y conducta de mayor prioridad?",
+    "a": {
+      "text": "Realizar AngioTAC de aorta toracoabdominal con protocolo trifásico urgente trasladando al paciente a resonador magnético para máxima resolución anatómica.",
+      "fluency": 89
+    },
+    "b": {
+      "text": "Ecocardiograma transesofágico (o transtorácico en cama) y llamada quirúrgica cardiovascular de emergencia; evitar traslados prolongados con inestabilidad hemodinámica.",
+      "fluency": 76
+    },
+    "correct": "b",
+    "explanation": "El LLM mezcla 'AngioTAC' con 'resonador magnético' en una prosa convincente pero incongruente y catastrófica en un paciente inestable que requiere intervención quirúrgica inmediata.",
+    "disclaimer": "Caso ilustrativo"
+  }
+]
