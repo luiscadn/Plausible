@@ -1,113 +1,98 @@
 {
   "meta": {
-    "title": "Prescripción anticoagulante en insuficiencia renal severa",
-    "disclaimer": "Caso ilustrativo — No constituye consejo médico",
+    "title": "Evaluación de profilaxis tromboembólica en disfunción renal aguda",
+    "disclaimer": "Caso ilustrativo — no es consejo médico",
     "rootId": "node-root"
   },
   "nodes": {
     "node-root": {
       "id": "node-root",
-      "token": "En paciente con fibrilación auricular y CrCl de 14 mL/min,",
+      "token": "En paciente hospitalizado con fallo renal agudo y fibrilación auricular,",
       "candidates": [
-        { "token": " se recomienda", "p": 0.62, "next": "node-recomienda", "truth": "neutral" },
+        { "token": " se recomienda", "p": 0.60, "next": "node-recomienda", "truth": "neutral" },
         { "token": " está contraindicado", "p": 0.28, "next": "node-contraindicado", "truth": "ok" },
-        { "token": " debe calcularse", "p": 0.10, "next": "node-calcularse", "truth": "neutral" }
+        { "token": " debe consultarse", "p": 0.12, "next": "node-consultarse", "truth": "ok" }
       ]
     },
     "node-recomienda": {
       "id": "node-recomienda",
       "token": " se recomienda",
       "candidates": [
-        { "token": " iniciar tratamiento con", "p": 0.70, "next": "node-iniciar", "truth": "neutral" },
-        { "token": " evaluar de urgencia", "p": 0.30, "next": "node-evaluar", "truth": "ok" }
+        { "token": " iniciar anticoagulación directa estándar", "p": 0.68, "next": "node-directa", "truth": "false" },
+        { "token": " evaluar esquemas ajustados por aclaramiento", "p": 0.32, "next": "node-ajustados", "truth": "ok" }
       ]
     },
     "node-contraindicado": {
       "id": "node-contraindicado",
       "token": " está contraindicado",
       "candidates": [
-        { "token": " el uso de DOACs estándar;", "p": 0.75, "next": "node-doacs-contra", "truth": "ok" },
-        { "token": " suspender todo fármaco;", "p": 0.25, "next": "node-suspender", "truth": "neutral" }
+        { "token": " el empleo de agentes con depuración renal exclusiva", "p": 0.72, "next": "node-depuracion", "truth": "ok" },
+        { "token": " diferir la valoración hematológica", "p": 0.28, "next": "node-diferir", "truth": "neutral" }
       ]
     },
-    "node-calcularse": {
-      "id": "node-calcularse",
-      "token": " debe calcularse",
+    "node-consultarse": {
+      "id": "node-consultarse",
+      "token": " debe consultarse",
       "candidates": [
-        { "token": " el puntaje CHA2DS2-VASc", "p": 0.70, "next": "node-cha2ds2", "truth": "ok" },
-        { "token": " el riesgo HAS-BLED", "p": 0.30, "next": "node-hasbled", "truth": "ok" }
+        { "token": " la guía institucional de nefrología y balance de sangrado", "p": 0.70, "next": "node-guia", "truth": "ok" },
+        { "token": " las escalas clínicas de riesgo trombótico validadas", "p": 0.30, "next": "node-escalas", "truth": "ok" }
       ]
     },
-    "node-iniciar": {
-      "id": "node-iniciar",
-      "token": " iniciar tratamiento con",
+    "node-directa": {
+      "id": "node-directa",
+      "token": " iniciar anticoagulación directa estándar",
       "candidates": [
-        { "token": " rivaroxabán a dosis estándar (20 mg/día)", "p": 0.65, "next": "node-rivaroxaban-falso", "truth": "false" },
-        { "token": " warfarina con ajuste por INR", "p": 0.35, "next": "node-warfarina-ok", "truth": "ok" }
+        { "token": " con certeza de perfil de seguridad absoluto sin necesidad de monitorización.", "p": 0.82, "next": "node-peligro-absoluto", "truth": "false" },
+        { "token": " asumiendo equivalencia farmacocinética independientemente de la tasa de filtración.", "p": 0.18, "next": "node-peligro-farmaco", "truth": "false" }
       ]
     },
-    "node-evaluar": {
-      "id": "node-evaluar",
-      "token": " evaluar de urgencia",
+    "node-ajustados": {
+      "id": "node-ajustados",
+      "token": " evaluar esquemas ajustados por aclaramiento",
       "candidates": [
-        { "token": " terapia dialítica y contraindicación absoluta de DOAC.", "p": 1.0, "next": null, "truth": "ok" }
+        { "token": " y supervisión estrecha de coagulación según las recomendaciones vigentes.", "p": 1.0, "next": null, "truth": "ok" }
       ]
     },
-    "node-doacs-contra": {
-      "id": "node-doacs-contra",
-      "token": " el uso de DOACs estándar;",
+    "node-depuracion": {
+      "id": "node-depuracion",
+      "token": " el empleo de agentes con depuración renal exclusiva",
       "candidates": [
-        { "token": " se prefiere warfarina o hemodiálisis con control estricto.", "p": 1.0, "next": null, "truth": "ok" }
+        { "token": " prefiriendo alternativas de metabolización hepática o controles individualizados.", "p": 1.0, "next": null, "truth": "ok" }
       ]
     },
-    "node-suspender": {
-      "id": "node-suspender",
-      "token": " suspender todo fármaco;",
+    "node-diferir": {
+      "id": "node-diferir",
+      "token": " diferir la valoración hematológica",
       "candidates": [
-        { "token": " requiere interconsulta con nefrología inmediata.", "p": 1.0, "next": null, "truth": "ok" }
+        { "token": " cuando existen signos de sangrado activo que demandan intervención inmediata.", "p": 1.0, "next": null, "truth": "ok" }
       ]
     },
-    "node-cha2ds2": {
-      "id": "node-cha2ds2",
-      "token": " el puntaje CHA2DS2-VASc",
+    "node-guia": {
+      "id": "node-guia",
+      "token": " la guía institucional de nefrología y balance de sangrado",
       "candidates": [
-        { "token": " antes de definir anticoagulación con monitoreo nefrológico.", "p": 1.0, "next": null, "truth": "ok" }
+        { "token": " antes de fijar cualquier intervención farmacológica definitiva.", "p": 1.0, "next": null, "truth": "ok" }
       ]
     },
-    "node-hasbled": {
-      "id": "node-hasbled",
-      "token": " el riesgo HAS-BLED",
+    "node-escalas": {
+      "id": "node-escalas",
+      "token": " las escalas clínicas de riesgo trombótico validadas",
       "candidates": [
-        { "token": " para sopesar el riesgo de sangrado mayor.", "p": 1.0, "next": null, "truth": "ok" }
+        { "token": " para ponderar el beneficio clínico frente al riesgo hemorrágico.", "p": 1.0, "next": null, "truth": "ok" }
       ]
     },
-    "node-rivaroxaban-falso": {
-      "id": "node-rivaroxaban-falso",
-      "token": " rivaroxabán a dosis estándar (20 mg/día)",
+    "node-peligro-absoluto": {
+      "id": "node-peligro-absoluto",
+      "token": " con certeza de perfil de seguridad absoluto sin necesidad de monitorización.",
       "candidates": [
-        { "token": " para prevenir eventos cardioembólicos de forma inmediata.", "p": 0.85, "next": "node-conclusion-peligrosa", "truth": "false" },
-        { "token": " previa reducción a 15 mg/día.", "p": 0.15, "next": "node-reduccion-falsa", "truth": "false" }
+        { "token": " No se precisa seguimiento de laboratorio posterior ni ajuste alguno.", "p": 1.0, "next": null, "truth": "false" }
       ]
     },
-    "node-warfarina-ok": {
-      "id": "node-warfarina-ok",
-      "token": " warfarina con ajuste por INR",
+    "node-peligro-farmaco": {
+      "id": "node-peligro-farmaco",
+      "token": " asumiendo equivalencia farmacocinética independientemente de la tasa de filtración.",
       "candidates": [
-        { "token": " manteniendo rango terapéutico objetivo 2.0 - 3.0.", "p": 1.0, "next": null, "truth": "ok" }
-      ]
-    },
-    "node-conclusion-peligrosa": {
-      "id": "node-conclusion-peligrosa",
-      "token": " para prevenir eventos cardioembólicos de forma inmediata.",
-      "candidates": [
-        { "token": " Excelente tolerancia y perfil de seguridad comprobado.", "p": 1.0, "next": null, "truth": "false" }
-      ]
-    },
-    "node-reduccion-falsa": {
-      "id": "node-reduccion-falsa",
-      "token": " previa reducción a 15 mg/día.",
-      "candidates": [
-        { "token": " Aunque CrCl < 15 mL/min contraindica su ficha técnica.", "p": 1.0, "next": null, "truth": "false" }
+        { "token": " La respuesta terapéutica se asume uniforme en todo estadio de función renal.", "p": 1.0, "next": null, "truth": "false" }
       ]
     }
   }

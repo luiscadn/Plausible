@@ -1,4 +1,6 @@
 import http from "node:http";
+import crypto from "node:crypto";
+import { createRequire } from "node:module";
 import express from "express";
 import cors from "cors";
 import { Server } from "socket.io";
@@ -8,7 +10,11 @@ import type {
   InterServerEvents,
   SocketData,
   GameState,
+  Round,
 } from "@plausible/content";
+
+const require = createRequire(import.meta.url);
+const roundsData = require("@plausible/content/data/rounds.json") as Round[];
 
 const PORT = Number(process.env.PORT || 4000);
 const ADMIN_KEY = process.env.ADMIN_KEY || "plausible-admin-2026";
@@ -42,11 +48,21 @@ const io = new Server<
   },
 });
 
+function verifyAdminKey(candidateKey: string | undefined): boolean {
+  if (!candidateKey) return false;
+  const expected = Buffer.from(ADMIN_KEY, "utf-8");
+  const candidate = Buffer.from(candidateKey, "utf-8");
+  if (expected.length !== candidate.length) {
+    return false;
+  }
+  return crypto.timingSafeEqual(expected, candidate);
+}
+
 // Initial game state
 let currentState: GameState = {
-  round: null,
+  round: roundsData[0] || null,
   roundIndex: 0,
-  totalRounds: 5,
+  totalRounds: roundsData.length,
   phase: "lobby",
   counts: { a: 0, b: 0 },
   participants: 0,
@@ -63,33 +79,46 @@ io.on("connection", (socket) => {
   });
 
   socket.on("vote", (payload) => {
-    if (socket.data.hasVoted) {
+    // 1. Must be in voting phase
+    if (currentState.phase !== "voting") {
+      socket.emit("error", { message: "La votación no está activa en esta fase." });
+      return;
+    }
+
+    // 2. Exactly one vote per socket per round
+    if (socket.data.votedRoundIndex === currentState.roundIndex) {
       socket.emit("error", { message: "Ya has emitido tu voto para esta ronda." });
       return;
     }
-    if (currentState.phase !== "voting") {
-      socket.emit("error", { message: "La votación no está activa." });
-      return;
-    }
+
+    socket.data.votedRoundIndex = currentState.roundIndex;
     socket.data.hasVoted = true;
+
     if (payload.choice === "a") currentState.counts.a += 1;
     if (payload.choice === "b") currentState.counts.b += 1;
-    io.to(payload.room).emit("state", currentState);
+
+    // Broadcast updated counts to room and globally
+    if (payload.room) {
+      io.to(payload.room).emit("state", currentState);
+    } else {
+      io.emit("state", currentState);
+    }
   });
 
   socket.on("round:start", (payload) => {
-    if (payload.adminKey !== ADMIN_KEY) {
-      socket.emit("error", { message: "ADMIN_KEY inválida." });
+    if (!verifyAdminKey(payload.adminKey)) {
+      socket.emit("error", { message: "No autorizado: ADMIN_KEY inválida." });
       return;
     }
     currentState.phase = "voting";
     currentState.counts = { a: 0, b: 0 };
+    currentState.round = roundsData[currentState.roundIndex] || null;
     io.emit("state", currentState);
   });
 
   socket.on("round:reveal", (payload) => {
-    if (payload.adminKey !== ADMIN_KEY) {
-      socket.emit("error", { message: "ADMIN_KEY inválida." });
+    if (!verifyAdminKey(payload.adminKey)) {
+      socket.emit("error", { message: "No autorizado: ADMIN_KEY inválida." });
       return;
     }
     currentState.phase = "reveal";
@@ -97,25 +126,31 @@ io.on("connection", (socket) => {
   });
 
   socket.on("round:next", (payload) => {
-    if (payload.adminKey !== ADMIN_KEY) {
-      socket.emit("error", { message: "ADMIN_KEY inválida." });
+    if (!verifyAdminKey(payload.adminKey)) {
+      socket.emit("error", { message: "No autorizado: ADMIN_KEY inválida." });
       return;
     }
-    currentState.roundIndex += 1;
-    currentState.phase = "voting";
-    currentState.counts = { a: 0, b: 0 };
+    const nextIdx = currentState.roundIndex + 1;
+    if (nextIdx >= roundsData.length) {
+      currentState.phase = "finished";
+    } else {
+      currentState.roundIndex = nextIdx;
+      currentState.round = roundsData[nextIdx] || null;
+      currentState.phase = "voting";
+      currentState.counts = { a: 0, b: 0 };
+    }
     io.emit("state", currentState);
   });
 
   socket.on("round:reset", (payload) => {
-    if (payload.adminKey !== ADMIN_KEY) {
-      socket.emit("error", { message: "ADMIN_KEY inválida." });
+    if (!verifyAdminKey(payload.adminKey)) {
+      socket.emit("error", { message: "No autorizado: ADMIN_KEY inválida." });
       return;
     }
     currentState = {
-      round: null,
+      round: roundsData[0] || null,
       roundIndex: 0,
-      totalRounds: 5,
+      totalRounds: roundsData.length,
       phase: "lobby",
       counts: { a: 0, b: 0 },
       participants: io.engine.clientsCount,
@@ -135,4 +170,4 @@ if (process.env.NODE_ENV !== "test") {
   });
 }
 
-export { app, server, io };
+export { app, server, io, verifyAdminKey };

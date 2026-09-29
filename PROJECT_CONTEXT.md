@@ -128,13 +128,24 @@ para estado crítico.
 - `/play` usable en 390×844, botones ≥ 48 px, carga < 1.5 s en 4G.
 - Lighthouse Performance ≥ 90 en `/` y `/play`.
 
-## 9. Resiliencia en vivo
+## 9. Resiliencia en vivo y controles
 - Si el servidor de Railway no responde en 3 s, `/stage` y la sección 02 pasan a
   "modo ensayo": votos simulados animados, con un indicador discreto.
 - Reconexión automática de Socket.IO. Estado del juego vive en el servidor
   (en memoria, una sola instancia).
-- Navegación: flechas ←/→, espacio, rueda, swipe. Tecla `F` = pantalla completa.
-  Hash en URL (`#04`) para saltar a una sección.
+- Navegación del Deck: scroll-snap vertical estricto (1 sección = 100dvh).
+  Hash en URL (`#04`) reactivo y sincronizado.
+- Propiedad del teclado:
+  - El deck es dueño exclusivo de: ←/→, ↑/↓, Espacio, PageUp/PageDown, tecla `F` (pantalla completa), números `1`–`9`.
+  - Dentro de una sección, un componente interactivo puede capturar teclas solo mientras el foco está en un control (slider, input) o invocando `onCaptureKeys(true)`; el deck ignora la navegación mientras la captura esté activa.
+  - Sliders: flechas mueven el slider solo con foco; tecla Escape devuelve el foco al deck.
+  - Controles del presentador del juego usan teclas dedicadas que el deck no escucha:
+    `S` = iniciar ronda, `R` = revelar, `N` = siguiente ronda, `0` = reset.
+- Seguridad del presentador:
+  - `ADMIN_KEY` NUNCA en variables `NEXT_PUBLIC_*` ni en el bundle del cliente.
+  - El presentador abre `/stage?key=<ADMIN_KEY>` o `/?key=<ADMIN_KEY>#02`; el cliente lo almacena únicamente en memoria y lo adjunta en los payloads de control. Sin key, `/stage` opera en solo lectura.
+  - El servidor valida la key con comparación de tiempo constante (`crypto.timingSafeEqual`) y rechaza acciones no autorizadas.
+  - Un voto por socket por ronda; se rechazan votos fuera de la fase `voting`.
 
 ## 10. Definition of Done (global)
 - `pnpm build` y `pnpm typecheck` sin errores; ESLint limpio.

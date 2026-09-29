@@ -26,4 +26,5 @@ export interface InterServerEvents {
 export interface SocketData {
   room?: string;
   hasVoted?: boolean;
+  votedRoundIndex?: number;
 }

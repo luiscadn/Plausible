@@ -43,7 +43,8 @@ export const RoundSchema = z.object({
   b: RoundOptionSchema,
   correct: z.enum(["a", "b"]),
   explanation: z.string(),
-  disclaimer: z.string().default("Caso ilustrativo"),
+  lesson: z.string(),
+  disclaimer: z.string().default("Caso ilustrativo — no es consejo médico"),
 });
 
 export const RoundsDataSchema = z.array(RoundSchema);

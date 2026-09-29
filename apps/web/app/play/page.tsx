@@ -1,14 +1,18 @@
+"use client";
+
 import { EcgDivider } from "@/components/ui/EcgDivider";
 
 export default function PlayPage() {
   return (
-    <main className="w-full min-h-screen max-w-md mx-auto p-4 flex flex-col justify-between bg-[#070A0F] text-[#E6EDF3]">
+    <main className="w-full min-h-[100dvh] max-w-md mx-auto p-4 flex flex-col justify-between bg-[#070A0F] text-[#E6EDF3] overflow-x-hidden">
       <header className="py-4 text-center border-b border-[#1C2633]">
         <span className="font-mono text-xs text-[#2DD4BF] tracking-wider uppercase">
           PLAUSIBLE // AUDIENCIA MÓVIL
         </span>
         <h1 className="text-xl font-bold font-display mt-1">¿Humano o Loro?</h1>
-        <p className="text-xs text-[#7D8B99] mt-0.5 font-mono">Caso ilustrativo</p>
+        <p className="text-xs text-[#F5B544] mt-0.5 font-mono">
+          Caso ilustrativo — no es consejo médico
+        </p>
       </header>
 
       <div className="py-6 flex flex-col gap-4">
@@ -24,7 +28,7 @@ export default function PlayPage() {
         <div className="grid grid-cols-1 gap-4">
           <button
             type="button"
-            className="w-full min-h-[80px] p-4 rounded-xl bg-[#0E141C] border-2 border-[#1C2633] active:border-[#2DD4BF] text-left transition-all"
+            className="w-full min-h-[52px] p-4 rounded-xl bg-[#0E141C] border-2 border-[#1C2633] active:border-[#2DD4BF] text-left transition-all"
             disabled
           >
             <span className="font-mono text-xs text-[#2DD4BF] block mb-1">OPCIÓN A</span>
@@ -33,7 +37,7 @@ export default function PlayPage() {
 
           <button
             type="button"
-            className="w-full min-h-[80px] p-4 rounded-xl bg-[#0E141C] border-2 border-[#1C2633] active:border-[#2DD4BF] text-left transition-all"
+            className="w-full min-h-[52px] p-4 rounded-xl bg-[#0E141C] border-2 border-[#1C2633] active:border-[#2DD4BF] text-left transition-all"
             disabled
           >
             <span className="font-mono text-xs text-[#2DD4BF] block mb-1">OPCIÓN B</span>
