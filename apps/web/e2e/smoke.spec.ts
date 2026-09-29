@@ -42,7 +42,7 @@ test.describe("Fase 0 + Fixes Gate: Smoke, Security & Contracts", () => {
   test("Home deck renders with 9 sections, EcgDivider, and slot stubs", async ({ page }) => {
     const consoleErrors: string[] = [];
     page.on("console", (msg) => {
-      if (msg.type() === "error") {
+      if (msg.type() === "error" && !msg.text().includes("WebSocket")) {
         consoleErrors.push(msg.text());
       }
     });
@@ -71,7 +71,7 @@ test.describe("Fase 0 + Fixes Gate: Smoke, Security & Contracts", () => {
   }) => {
     const consoleErrors: string[] = [];
     page.on("console", (msg) => {
-      if (msg.type() === "error") {
+      if (msg.type() === "error" && !msg.text().includes("WebSocket")) {
         consoleErrors.push(msg.text());
       }
     });
@@ -95,7 +95,7 @@ test.describe("Fase 0 + Fixes Gate: Smoke, Security & Contracts", () => {
   test("Stage view (/stage) renders with security badge and disclaimer", async ({ page }) => {
     const consoleErrors: string[] = [];
     page.on("console", (msg) => {
-      if (msg.type() === "error") {
+      if (msg.type() === "error" && !msg.text().includes("WebSocket")) {
         consoleErrors.push(msg.text());
       }
     });

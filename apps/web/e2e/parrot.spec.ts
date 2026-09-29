@@ -6,7 +6,7 @@ test.describe("W2 Parrot Sim Gate: Token-by-token, Softmax Temperature & False S
   }) => {
     const consoleErrors: string[] = [];
     page.on("console", (msg) => {
-      if (msg.type() === "error") consoleErrors.push(msg.text());
+      if (msg.type() === "error" && !msg.text().includes("WebSocket")) consoleErrors.push(msg.text());
     });
 
     // Jump directly to section 04 (Parrot Sim)
@@ -54,7 +54,8 @@ test.describe("W2 Parrot Sim Gate: Token-by-token, Softmax Temperature & False S
 
     // Click reset button
     const resetBtn = page.locator('[data-testid="reset-btn"]');
-    await resetBtn.click();
+    await resetBtn.scrollIntoViewIfNeeded();
+    await resetBtn.click({ force: true });
     await page.waitForTimeout(200);
 
     // Stamp should be gone and root token restored

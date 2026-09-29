@@ -6,16 +6,18 @@ import parrotData from "@plausible/content/data/parrot.json";
 import type { ParrotNode, ParrotCandidate } from "@plausible/content";
 import { Play, Pause, RotateCcw, AlertOctagon } from "lucide-react";
 
+const nodes = parrotData.nodes as Record<string, ParrotNode>;
+
 export default function ParrotSim({ active, reducedMotion, onCaptureKeys }: SimSlotProps) {
   const [currentNodeId, setCurrentNodeId] = useState<string>(parrotData.meta.rootId);
   const [history, setHistory] = useState<string[]>([
-    parrotData.nodes[parrotData.meta.rootId].token,
+    nodes[parrotData.meta.rootId]?.token || "",
   ]);
   const [temperature, setTemperature] = useState<number>(1.0);
   const [isAutoPlay, setIsAutoPlay] = useState<boolean>(false);
   const [hasFalseStamp, setHasFalseStamp] = useState<boolean>(false);
 
-  const currentNode: ParrotNode | undefined = (parrotData.nodes as Record<string, ParrotNode>)[currentNodeId];
+  const currentNode: ParrotNode | undefined = nodes[currentNodeId];
 
   // Softmax re-weighting with Temperature T
   const weightedCandidates = useMemo(() => {
@@ -47,7 +49,7 @@ export default function ParrotSim({ active, reducedMotion, onCaptureKeys }: SimS
         setHasFalseStamp(true);
       }
 
-      if (candidate.next && (parrotData.nodes as Record<string, ParrotNode>)[candidate.next]) {
+      if (candidate.next && nodes[candidate.next]) {
         setCurrentNodeId(candidate.next);
       } else {
         setIsAutoPlay(false);
@@ -88,7 +90,7 @@ export default function ParrotSim({ active, reducedMotion, onCaptureKeys }: SimS
     setIsAutoPlay(false);
     setHasFalseStamp(false);
     setCurrentNodeId(parrotData.meta.rootId);
-    setHistory([parrotData.nodes[parrotData.meta.rootId].token]);
+    setHistory([nodes[parrotData.meta.rootId]?.token || ""]);
   };
 
   return (

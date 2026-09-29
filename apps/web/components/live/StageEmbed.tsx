@@ -74,6 +74,9 @@ export default function StageEmbed({ active, reducedMotion, onCaptureKeys }: Sim
       {/* Status Bar */}
       <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-[#1C2633]">
         <div className="flex items-center gap-3">
+          <h1 className="text-xl sm:text-2xl font-bold font-display text-[#E6EDF3]">
+            ¿Humano o Loro?
+          </h1>
           <span className="font-mono text-xs px-2.5 py-1 rounded bg-[#1C2633] text-[#2DD4BF]">
             RONDA {gameState.roundIndex + 1} / {gameState.totalRounds}
           </span>

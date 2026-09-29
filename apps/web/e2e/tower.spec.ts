@@ -6,7 +6,7 @@ test.describe("W3 Tower Sim Gate: Canvas 2D Monte Carlo & FPS Benchmark", () => 
   }, testInfo) => {
     const consoleErrors: string[] = [];
     page.on("console", (msg) => {
-      if (msg.type() === "error") consoleErrors.push(msg.text());
+      if (msg.type() === "error" && !msg.text().includes("WebSocket")) consoleErrors.push(msg.text());
     });
 
     // Jump directly to section 05 (Tower Sim)

@@ -37,7 +37,7 @@ export function useLiveGame(role: "player" | "presenter", adminKey?: string | nu
   // Initialize Socket.IO connection
   useEffect(() => {
     const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(DEFAULT_SERVER_URL, {
-      transports: ["websocket", "polling"],
+      transports: ["polling", "websocket"],
       reconnectionAttempts: 3,
       timeout: 3000,
     });

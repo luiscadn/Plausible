@@ -11,6 +11,25 @@ export default function PlayPage() {
   const isVoting = gameState.phase === "voting";
   const isReveal = gameState.phase === "reveal";
 
+  const getOptionStyle = (choice: "a" | "b") => {
+    if (isReveal) {
+      if (currentRound?.correct === choice) {
+        return "bg-[#2DD4BF]/15 border-[#2DD4BF]";
+      }
+      if (userChoice === choice) {
+        return "bg-[#FF5A5F]/20 border-[#FF5A5F]";
+      }
+      return "bg-[#0E141C]/40 border-[#1C2633] opacity-50";
+    }
+    if (userChoice === choice) {
+      return "bg-[#2DD4BF]/20 border-[#2DD4BF] shadow-lg shadow-[#2DD4BF]/10";
+    }
+    if (isVoting && !hasVoted) {
+      return "bg-[#0E141C] border-[#1C2633] active:border-[#2DD4BF] active:scale-[0.98]";
+    }
+    return "bg-[#0E141C]/50 border-[#1C2633] opacity-60";
+  };
+
   return (
     <main className="w-full min-h-[100dvh] max-w-md mx-auto p-4 flex flex-col justify-between bg-[#070A0F] text-[#E6EDF3] overflow-x-hidden">
       {/* Mobile Header */}
@@ -68,17 +87,7 @@ export default function PlayPage() {
             data-testid="vote-btn-a"
             disabled={!isVoting || hasVoted}
             onClick={() => vote("a")}
-            className={`w-full min-h-[72px] p-4 rounded-xl border-2 text-left transition-all relative overflow-hidden cursor-pointer ${
-              userChoice === "a"
-                ? "bg-[#2DD4BF]/20 border-[#2DD4BF] shadow-lg shadow-[#2DD4BF]/10"
-                : isReveal && currentRound?.correct === "a"
-                ? "bg-[#2DD4BF]/10 border-[#2DD4BF]"
-                : isReveal && currentRound?.correct !== "a" && userChoice === "a"
-                ? "bg-[#FF5A5F]/20 border-[#FF5A5F]"
-                : isVoting && !hasVoted
-                ? "bg-[#0E141C] border-[#1C2633] active:border-[#2DD4BF] active:scale-[0.98]"
-                : "bg-[#0E141C]/50 border-[#1C2633] opacity-60"
-            }`}
+            className={`w-full min-h-[72px] p-4 rounded-xl border-2 text-left transition-all relative overflow-hidden cursor-pointer ${getOptionStyle("a")}`}
           >
             <div className="flex items-center justify-between mb-1">
               <span className="font-mono text-xs font-bold text-[#2DD4BF]">
@@ -101,17 +110,7 @@ export default function PlayPage() {
             data-testid="vote-btn-b"
             disabled={!isVoting || hasVoted}
             onClick={() => vote("b")}
-            className={`w-full min-h-[72px] p-4 rounded-xl border-2 text-left transition-all relative overflow-hidden cursor-pointer ${
-              userChoice === "b"
-                ? "bg-[#2DD4BF]/20 border-[#2DD4BF] shadow-lg shadow-[#2DD4BF]/10"
-                : isReveal && currentRound?.correct === "b"
-                ? "bg-[#2DD4BF]/10 border-[#2DD4BF]"
-                : isReveal && currentRound?.correct !== "b" && userChoice === "b"
-                ? "bg-[#FF5A5F]/20 border-[#FF5A5F]"
-                : isVoting && !hasVoted
-                ? "bg-[#0E141C] border-[#1C2633] active:border-[#2DD4BF] active:scale-[0.98]"
-                : "bg-[#0E141C]/50 border-[#1C2633] opacity-60"
-            }`}
+            className={`w-full min-h-[72px] p-4 rounded-xl border-2 text-left transition-all relative overflow-hidden cursor-pointer ${getOptionStyle("b")}`}
           >
             <div className="flex items-center justify-between mb-1">
               <span className="font-mono text-xs font-bold text-[#2DD4BF]">

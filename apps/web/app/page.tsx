@@ -233,9 +233,9 @@ export default function PresentationPage() {
       <section
         id="sec-04"
         data-section-id="04"
-        className="w-full h-[100dvh] snap-start flex flex-col justify-center items-center p-6 relative"
+        className="w-full h-[100dvh] snap-start flex flex-col justify-center items-center p-3 sm:p-6 relative overflow-hidden"
       >
-        <div className="w-full max-w-6xl mx-auto h-full flex flex-col justify-between py-12">
+        <div className="w-full max-w-6xl mx-auto h-full flex flex-col justify-between py-4 sm:py-8">
           <div>
             <div className="flex items-center justify-between mb-1">
               <span className="font-mono text-xs px-2.5 py-1 rounded bg-[#1C2633] text-[#2DD4BF]">
@@ -245,7 +245,7 @@ export default function PresentationPage() {
                 Caso ilustrativo — no es consejo médico
               </span>
             </div>
-            <h2 className="text-2xl sm:text-4xl font-bold font-display text-[#E6EDF3]">
+            <h2 className="text-xl sm:text-3xl font-bold font-display text-[#E6EDF3]">
               Los LLM predicen palabras, no razonan: El Loro Estocástico
             </h2>
           </div>
@@ -266,9 +266,9 @@ export default function PresentationPage() {
       <section
         id="sec-05"
         data-section-id="05"
-        className="w-full h-[100dvh] snap-start flex flex-col justify-center items-center p-6 relative"
+        className="w-full h-[100dvh] snap-start flex flex-col justify-center items-center p-3 sm:p-6 relative overflow-hidden"
       >
-        <div className="w-full max-w-6xl mx-auto h-full flex flex-col justify-between py-12">
+        <div className="w-full max-w-6xl mx-auto h-full flex flex-col justify-between py-4 sm:py-8">
           <div>
             <div className="flex items-center justify-between mb-1">
               <span className="font-mono text-xs px-2.5 py-1 rounded bg-[#1C2633] text-[#2DD4BF]">
