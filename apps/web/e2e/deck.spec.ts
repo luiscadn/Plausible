@@ -11,13 +11,13 @@ test.describe("W1 Deck Gate: Navigation, Keyboard & Sliders Focus", () => {
 
     await page.goto("/");
     await expect(page).toHaveTitle(/PLAUSIBLE/);
+    await page.locator("body").click();
 
     // Initial section is 01
     await expect(page.locator("header")).toContainText("SECCIÓN 01 / 09");
 
     // Press Space to advance to 02
     await page.keyboard.press("Space");
-    await page.waitForTimeout(300);
     await expect(page.locator("header")).toContainText("SECCIÓN 02 / 09");
     expect(page.url()).toContain("#02");
 

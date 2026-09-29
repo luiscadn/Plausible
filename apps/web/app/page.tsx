@@ -43,13 +43,22 @@ export default function PresentationPage() {
     }
   }, []);
 
+  const isProgrammaticScroll = useRef(false);
+  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
+
   // Jump to section helper
   const goToSection = useCallback((id: string) => {
     const el = document.getElementById(`sec-${id}`);
     if (el) {
-      el.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth" });
+      isProgrammaticScroll.current = true;
+      if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+      scrollTimeout.current = setTimeout(() => {
+        isProgrammaticScroll.current = false;
+      }, 700);
+
       setActiveSection(id);
       window.history.replaceState(null, "", `#${id}`);
+      el.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
     }
   }, [reducedMotion]);
 
@@ -63,10 +72,11 @@ export default function PresentationPage() {
     }
   }, [goToSection]);
 
-  // Intersection observer to sync active section during scroll
+  // Intersection observer to sync active section during manual scroll
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
+        if (isProgrammaticScroll.current) return;
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const id = entry.target.getAttribute("data-section-id");
@@ -77,7 +87,7 @@ export default function PresentationPage() {
           }
         });
       },
-      { threshold: 0.6 }
+      { threshold: 0.5 }
     );
 
     const sections = document.querySelectorAll("section[data-section-id]");
