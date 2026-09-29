@@ -77,6 +77,29 @@ body {
   animation: ecg-scan 2.8s linear infinite;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Accessible focus ring */
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 2px solid #2DD4BF;
+  outline-offset: 2px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

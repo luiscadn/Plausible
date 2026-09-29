@@ -203,7 +203,7 @@ export default function PresentationPage() {
                 Caso ilustrativo — no es consejo médico
               </span>
             </div>
-            <h2 className="text-2xl sm:text-4xl font-bold font-display text-[#E6EDF3]">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold font-display text-[#E6EDF3] tracking-tight">
               Fluidez ≠ Fiabilidad: ¿Humano o Loro?
             </h2>
           </div>
