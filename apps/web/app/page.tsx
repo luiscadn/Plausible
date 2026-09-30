@@ -9,6 +9,9 @@ import { Section06 } from "@/components/deck/Section06";
 import { Section07 } from "@/components/deck/Section07";
 import { Section08 } from "@/components/deck/Section08";
 import { Section09 } from "@/components/deck/Section09";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { WhatsHappening } from "@/components/ui/WhatsHappening";
+import { GlossaryTerm, GLOSSARY } from "@/components/ui/GlossaryTerm";
 
 // Slots imported dynamically with ssr: false
 const StageEmbed = dynamic<SimSlotProps>(
@@ -194,19 +197,11 @@ export default function PresentationPage() {
         className="w-full h-[100dvh] snap-start flex flex-col justify-center items-center p-6 relative"
       >
         <div className="w-full max-w-6xl mx-auto h-full flex flex-col justify-between py-12">
-          <div>
-            <div className="flex items-center justify-between mb-1">
-              <span className="font-mono text-xs px-2.5 py-1 rounded bg-[#1C2633] text-[#2DD4BF]">
-                SECCIÓN 02 / 09
-              </span>
-              <span className="text-xs font-mono text-[#F5B544]">
-                Caso ilustrativo — no es consejo médico
-              </span>
-            </div>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold font-display text-[#E6EDF3] tracking-tight">
-              Fluidez ≠ Fiabilidad: ¿Humano o Loro?
-            </h2>
-          </div>
+          <SectionHeader
+            index="02"
+            caveat="Caso ilustrativo — no es consejo médico"
+            title="Fluidez ≠ fiabilidad: ¿Humano o Loro?"
+          />
           <div className="my-auto w-full">
             <StageEmbed
               active={activeSection === "02"}
@@ -233,22 +228,14 @@ export default function PresentationPage() {
       <section
         id="sec-04"
         data-section-id="04"
-        className="w-full h-[100dvh] snap-start flex flex-col justify-center items-center p-3 sm:p-6 relative overflow-hidden"
+        className="w-full h-[100dvh] snap-start flex flex-col justify-center items-center p-3 sm:p-6 relative overflow-y-auto overflow-x-hidden"
       >
-        <div className="w-full max-w-6xl mx-auto h-full flex flex-col justify-between py-4 sm:py-8">
-          <div>
-            <div className="flex items-center justify-between mb-1">
-              <span className="font-mono text-xs px-2.5 py-1 rounded bg-[#1C2633] text-[#2DD4BF]">
-                SECCIÓN 04 / 09
-              </span>
-              <span className="text-xs font-mono text-[#F5B544]">
-                Caso ilustrativo — no es consejo médico
-              </span>
-            </div>
-            <h2 className="text-xl sm:text-3xl font-bold font-display text-[#E6EDF3]">
-              Los LLM predicen palabras, no razonan: El Loro Estocástico
-            </h2>
-          </div>
+        <div className="w-full max-w-6xl mx-auto min-h-full flex flex-col justify-between py-4 sm:py-8">
+          <SectionHeader
+            index="04"
+            caveat="Caso ilustrativo — no es consejo médico"
+            title="Los LLM predicen palabras, no razonan: el Loro Estocástico"
+          />
           <div className="my-auto w-full">
             <ParrotSim
               active={activeSection === "04"}
@@ -256,8 +243,16 @@ export default function PresentationPage() {
               onCaptureKeys={setCapturingKeys}
             />
           </div>
-          <div className="border-t border-[#1C2633] pt-2 text-xs font-mono text-[#7D8B99]">
-            Simulador probabilístico basado en Bender et al.
+          <div>
+            <div className="border-t border-[#1C2633] pt-2 text-xs font-mono text-[#7D8B99]">
+              Simulador probabilístico basado en Bender et al.
+            </div>
+            <WhatsHappening>
+              El modelo elige el <GlossaryTerm term="token" definition={GLOSSARY.token}>token</GlossaryTerm> más{" "}
+              <GlossaryTerm term="probabilidad" definition={GLOSSARY.probabilidad}>probable</GlossaryTerm>, no el más
+              cierto. La <GlossaryTerm term="temperatura" definition={GLOSSARY.temperatura}>temperatura</GlossaryTerm>{" "}
+              cambia qué tan predecible es esa elección, pero nunca verifica si el resultado es verdad.
+            </WhatsHappening>
           </div>
         </div>
       </section>
@@ -266,22 +261,14 @@ export default function PresentationPage() {
       <section
         id="sec-05"
         data-section-id="05"
-        className="w-full h-[100dvh] snap-start flex flex-col justify-center items-center p-3 sm:p-6 relative overflow-hidden"
+        className="w-full h-[100dvh] snap-start flex flex-col justify-center items-center p-3 sm:p-6 relative overflow-y-auto overflow-x-hidden"
       >
-        <div className="w-full max-w-6xl mx-auto h-full flex flex-col justify-between py-4 sm:py-8">
-          <div>
-            <div className="flex items-center justify-between mb-1">
-              <span className="font-mono text-xs px-2.5 py-1 rounded bg-[#1C2633] text-[#2DD4BF]">
-                SECCIÓN 05 / 09
-              </span>
-              <span className="text-xs font-mono text-[#F5B544]">
-                Caso ilustrativo — no es consejo médico
-              </span>
-            </div>
-            <h2 className="text-2xl sm:text-4xl font-bold font-display text-[#E6EDF3]">
-              Sesgos y opacidad persisten: Torre de Validación Monte Carlo
-            </h2>
-          </div>
+        <div className="w-full max-w-6xl mx-auto min-h-full flex flex-col justify-between py-4 sm:py-8">
+          <SectionHeader
+            index="05"
+            caveat="Caso ilustrativo — no es consejo médico"
+            title="Sesgos y opacidad persisten: Torre de Validación Monte Carlo"
+          />
           <div className="my-auto w-full">
             <TowerSim
               active={activeSection === "05"}
@@ -289,8 +276,15 @@ export default function PresentationPage() {
               onCaptureKeys={setCapturingKeys}
             />
           </div>
-          <div className="border-t border-[#1C2633] pt-2 text-xs font-mono text-[#7D8B99]">
-            Simulación Canvas 2D: propagación y correlación de error en capas
+          <div>
+            <div className="border-t border-[#1C2633] pt-2 text-xs font-mono text-[#7D8B99]">
+              Simulación Canvas 2D: propagación y correlación de error en capas
+            </div>
+            <WhatsHappening>
+              Cada capa de validación hereda el{" "}
+              <GlossaryTerm term="sesgo" definition={GLOSSARY.sesgo}>sesgo</GlossaryTerm> de la anterior y puede
+              amplificarlo. Más capas no eliminan el error si está correlacionado entre ellas.
+            </WhatsHappening>
           </div>
         </div>
       </section>

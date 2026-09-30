@@ -100,6 +100,83 @@ a:focus-visible {
   outline-offset: 2px;
 }
 
+/* --- Escala tipográfica y ritmo (Fase D: sistema global) ---
+   3 niveles de título en todo el deck: hero (solo 01), section (02-09),
+   label (badges/eyebrows). Antes había 4 tamaños distintos para
+   "section title" (text-xl/2xl/4xl/5xl mezclados) sin razón semántica. */
+.title-hero {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  font-size: clamp(2.25rem, 3.2vw + 1.5rem, 4.5rem);
+}
+
+.title-section {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  font-size: clamp(1.5rem, 1.6vw + 1.1rem, 2.5rem);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Grilla de 8px para separaciones entre bloques de una sección */
+.stack-8 > * + * { margin-top: 8px; }
+.stack-16 > * + * { margin-top: 16px; }
+.stack-24 > * + * { margin-top: 24px; }
+.stack-32 > * + * { margin-top: 32px; }
+
+/* --- Glosario: tooltip accesible (teclado + táctil) --- */
+.glossary-term {
+  border-bottom: 1px dashed var(--muted);
+  cursor: help;
+  position: relative;
+}
+
+.glossary-term:focus-visible {
+  outline: 2px solid #2DD4BF;
+  outline-offset: 2px;
+}
+
+.glossary-tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  transform: translateX(-50%) translateY(4px);
+  width: max-content;
+  max-width: 260px;
+  padding: 8px 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: var(--text);
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  z-index: 60;
+}
+
+.glossary-term:hover .glossary-tooltip,
+.glossary-term:focus-visible .glossary-tooltip,
+.glossary-term[data-open="true"] .glossary-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
