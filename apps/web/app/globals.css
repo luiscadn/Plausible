@@ -189,6 +189,21 @@ button:active,
   animation: caret-blink 1s step-end infinite;
 }
 
+/* Sello de "no verificado": un solo golpe, sin rebote de juguete */
+@keyframes stamp-in {
+  from {
+    opacity: 0;
+    transform: scale(1.15) rotate(-2deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(-2deg);
+  }
+}
+.animate-stamp {
+  animation: stamp-in 0.25s var(--ease-out) forwards;
+}
+
 /* --- Glosario: tooltip accesible (teclado + táctil) --- */
 .glossary-term {
   border-bottom: 1px dashed var(--muted);

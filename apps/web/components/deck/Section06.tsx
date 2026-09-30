@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { SectionNumberMark } from "@/components/ui/SectionNumberMark";
 import { FigureLabel } from "@/components/ui/FigureLabel";
+import { MarginNote } from "@/components/ui/MarginNote";
 
 const NODES = [
   { label: "Desarrollador", weight: 0.3 },
@@ -70,6 +71,11 @@ export const Section06: React.FC = () => {
           className="w-full max-w-md accent-[#0F766E] cursor-pointer"
         />
       </div>
+
+      <MarginNote className="mt-8">
+        Verificar un texto plausible toma más tiempo cognitivo que redactarlo desde cero: la
+        &laquo;paradoja de la automatización&raquo; aumenta el cansancio y el error por fatiga.
+      </MarginNote>
     </div>
   );
 };

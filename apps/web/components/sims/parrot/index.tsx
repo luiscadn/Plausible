@@ -136,7 +136,7 @@ export default function ParrotSim({ active, reducedMotion, onCaptureKeys }: SimS
         {hasFalseStamp && (
           <div
             data-testid="false-stamp"
-            className="absolute top-4 right-4 z-20 px-4 py-2 rounded-sm bg-[#C2410C]/20 border-2 border-[#C2410C] text-[#C2410C] font-mono font-bold text-xs uppercase flex items-center gap-2 rotate-[-2deg] animate-bounce"
+            className="absolute top-4 right-4 z-20 px-4 py-2 rounded-sm bg-[#C2410C]/20 border-2 border-[#C2410C] text-[#C2410C] font-mono font-bold text-xs uppercase flex items-center gap-2 animate-stamp"
           >
             <AlertOctagon className="w-4 h-4 shrink-0" />
             <span>NADIE VERIFICÓ ESTO</span>
@@ -173,7 +173,7 @@ export default function ParrotSim({ active, reducedMotion, onCaptureKeys }: SimS
                 />
 
                 <div className="relative z-10 flex items-center justify-between gap-4">
-                  <span className="text-sm text-[#14161A] group-hover:text-white font-medium">
+                  <span className="text-sm text-[#14161A] font-medium">
                     {cand.token}
                   </span>
                   <span className="font-mono text-xs font-bold text-[#0F766E] shrink-0">
