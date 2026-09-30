@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: plausible-live
+    runtime: node
+    plan: free
+    region: oregon
+    rootDir: .
+    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm --filter @plausible/content build && pnpm --filter @plausible/live build
+    startCommand: pnpm --filter @plausible/live start
+    healthCheckPath: /health
+    envVars:
+      - key: ADMIN_KEY
+        sync: false
+      - key: ALLOWED_ORIGIN
+        sync: false
+      - key: NODE_VERSION
+        value: 20
