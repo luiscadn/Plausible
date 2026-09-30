@@ -106,19 +106,28 @@ para estado crítico.
   - servidor → todos: `state {round, phase, counts, participants}`
 
 ## 7. Sistema de diseño
-- Concepto: "monitor clínico nocturno" + editorial científico. Oscuro, preciso, con
-  latido.
-- Tokens:
-  - `--bg #070A0F`, `--surface #0E141C`, `--line #1C2633`
-  - `--text #E6EDF3`, `--muted #7D8B99`
-  - `--truth #2DD4BF` (teal clínico = verificado)
-  - `--false #FF5A5F` (coral = falso pero plausible)
-  - `--uncertain #F5B544` (ámbar = incertidumbre)
+- Concepto: "cuaderno de laboratorio" + editorial científico. Claro, preciso,
+  con la exactitud de un instrumento de medición (evolución del concepto
+  original "monitor clínico nocturno": misma estructura editorial —
+  asimetría, hairlines, marcas de figura FIG. N, watermarks de número de
+  sección — sobre una piel clara en vez de oscura).
+- Tokens (verificados AA sobre `--bg`, ver `apps/web/app/globals.css`):
+  - `--bg #FAFAF7` (papel), `--surface #FFFFFF`, `--line #E4E4DE`
+  - `--text #14161A`, `--muted #5E646C` (5.71:1)
+  - `--truth #0F766E` (teal profundo = verificado, 5.23:1)
+  - `--false #C2410C` (coral/rojo profundo = falso pero plausible, 4.95:1)
+  - `--uncertain #B45309` (ámbar oscuro = incertidumbre, 4.80:1)
+  - Todo lo que no tiene significado semántico va en escala de grises.
 - Tipografía (next/font): Space Grotesk (títulos), Inter (texto),
-  JetBrains Mono (tokens, probabilidades, números).
-- Motivos: línea de ECG como separador, glow sutil, grano fino, números monoespaciados.
-- Movimiento: transiciones de 400–600 ms, easing `[0.22, 1, 0.36, 1]`.
-  Respetar `prefers-reduced-motion`.
+  JetBrains Mono (tokens, probabilidades, números, etiquetas de figura).
+- Motivos: línea de ECG como separador, retícula de puntos muy tenue (grano de
+  papel científico), números de sección como marca de agua, notas al margen
+  ("Nota: …") para ideas secundarias.
+- Movimiento (principios de Emil Kowalski, ver `.claude/skills/emil-design-eng/`):
+  solo `transform`/`opacity`; `--ease-out: cubic-bezier(0.23, 1, 0.32, 1)` para
+  entradas, nunca `ease-in`; microinteracciones ≤250 ms, transiciones de
+  sección ≤400 ms; `:active` en controles usa `scale(0.97)`; nada de bounce ni
+  easing elástico. Respetar `prefers-reduced-motion` (colapsa a solo opacidad).
 
 ## 8. Presupuestos de rendimiento
 - JS inicial de `/` < 200 KB gzip. Simulaciones con `next/dynamic` y `ssr:false`,
