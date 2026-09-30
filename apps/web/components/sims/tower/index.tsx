@@ -259,11 +259,11 @@ export default function TowerSim({ active, reducedMotion, onCaptureKeys }: SimSl
     <div
       data-testid="tower-sim-slot"
       data-active={active}
-      className="w-full max-w-5xl mx-auto rounded-xl border border-[#1C2633] bg-[#0E141C] p-6 shadow-2xl flex flex-col gap-6"
+      className="w-full max-w-5xl mx-auto rounded-sm border border-[#1C2633] bg-[#0E141C] p-6 flex flex-col gap-6"
     >
       {/* Top Banner / Metrics */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pb-4 border-b border-[#1C2633]">
-        <div className="p-3 rounded-lg bg-[#070A0F] border border-[#1C2633]">
+        <div className="p-3 rounded-sm bg-[#070A0F] border border-[#1C2633]">
           <span className="font-mono text-[11px] text-[#7D8B99] uppercase block">
             PRECISIÓN CONTEXTUAL
           </span>
@@ -275,7 +275,7 @@ export default function TowerSim({ active, reducedMotion, onCaptureKeys }: SimSl
           </span>
         </div>
 
-        <div className="p-3 rounded-lg bg-[#070A0F] border border-[#1C2633]">
+        <div className="p-3 rounded-sm bg-[#070A0F] border border-[#1C2633]">
           <span className="font-mono text-[11px] text-[#7D8B99] uppercase block">
             SI FUERAN INDEPENDIENTES
           </span>
@@ -284,7 +284,7 @@ export default function TowerSim({ active, reducedMotion, onCaptureKeys }: SimSl
           </span>
         </div>
 
-        <div className="p-3 rounded-lg bg-[#070A0F] border border-[#1C2633]">
+        <div className="p-3 rounded-sm bg-[#070A0F] border border-[#1C2633]">
           <span className="font-mono text-[11px] text-[#7D8B99] uppercase block">
             ERRORES FILTRADOS
           </span>
@@ -293,7 +293,7 @@ export default function TowerSim({ active, reducedMotion, onCaptureKeys }: SimSl
           </span>
         </div>
 
-        <div className="p-3 rounded-lg bg-[#070A0F] border border-[#1C2633]">
+        <div className="p-3 rounded-sm bg-[#070A0F] border border-[#1C2633]">
           <span className="font-mono text-[11px] text-[#7D8B99] uppercase block">
             RENDIMIENTO CANVAS
           </span>
@@ -307,7 +307,7 @@ export default function TowerSim({ active, reducedMotion, onCaptureKeys }: SimSl
       </div>
 
       {/* Canvas 2D simulation viewport */}
-      <div className="relative w-full h-[360px] rounded-lg overflow-hidden border border-[#1C2633] bg-[#0E141C]">
+      <div className="relative w-full h-[360px] rounded-sm overflow-hidden border border-[#1C2633] bg-[#0E141C]">
         <canvas ref={canvasRef} className="w-full h-full block" />
         {correlation > 0.6 && (
           <div className="absolute bottom-4 left-4 right-4 p-3 rounded bg-[#070A0F]/90 border border-[#FF5A5F]/50 text-xs font-mono text-[#FF5A5F] flex items-center justify-between">

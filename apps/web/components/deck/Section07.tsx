@@ -1,80 +1,53 @@
 import React from "react";
 import { Check, X } from "lucide-react";
+import { SectionNumberMark } from "@/components/ui/SectionNumberMark";
+
+const SI = [
+  { title: "Resumen de historias clínicas", body: "Extracción de antecedentes en registros voluminosos, con supervisión de fuentes." },
+  { title: "Traducción a lenguaje llano", body: "Explicar instrucciones de alta al paciente de forma comprensible." },
+  { title: "Búsqueda bibliográfica preliminar", body: "Síntesis rápida de literatura científica vinculada a fuentes verificadas." },
+  { title: "Reducción de carga administrativa", body: "Borradores para notas de evolución y codificación." },
+];
+
+const NO = [
+  { title: "Diagnóstico diferencial no supervisado", body: "La generación estadística no pondera fisiopatología atípica." },
+  { title: "Prescripción farmacológica directa", body: "Riesgo crítico de error posológico o interacciones no detectadas." },
+  { title: "Triaje de urgencia autónomo", body: "La priorización requiere evaluación clínica presencial." },
+  { title: "Sustitución del juicio clínico", body: "La responsabilidad no puede delegarse a un modelo estadístico." },
+];
 
 export const Section07: React.FC = () => {
   return (
-    <div className="flex flex-col justify-center h-full max-w-5xl mx-auto py-6">
-      <div className="mb-6">
-        <p className="eyebrow text-[#2DD4BF] mb-2">
-          CRITERIO OPERATIVO // LU ET AL. (JAMIA 2024)
-        </p>
-        <h3 className="title-section text-[#E6EDF3]">
-          Apoyar, no reemplazar: Delimitación de tareas clínicas
-        </h3>
-        <p className="text-[#7D8B99] mt-2 text-sm sm:text-base">
-          Los LLM poseen valor real como asistentes de productividad lingüística, pero carecen de competencia epistémica para la autonomía médica.
-        </p>
+    <div className="relative h-full w-full flex flex-col justify-center px-6 sm:px-10 lg:px-14 py-16">
+      <SectionNumberMark index="07" className="absolute top-6 right-6 sm:right-10" />
+
+      <div className="max-w-3xl">
+        <p className="font-mono text-[11px] text-[#7D8B99] mb-3">Lu et al., JAMIA 2024</p>
+        <h3 className="display-title text-[#E6EDF3]">Apoyar, no reemplazar</h3>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Usos Válidos (SÍ) */}
-        <div className="p-6 rounded-xl bg-[#0E141C] border border-[#2DD4BF]/30">
-          <div className="flex items-center gap-2 mb-4 pb-3 border-b border-[#1C2633]">
-            <div className="w-6 h-6 rounded-full bg-[#2DD4BF]/20 flex items-center justify-center">
-              <Check className="w-4 h-4 text-[#2DD4BF]" />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 mt-10 max-w-5xl divide-y divide-[#1C2633] md:divide-y-0">
+        <div className="divide-y divide-[#1C2633]">
+          {SI.map((item) => (
+            <div key={item.title} className="flex items-start gap-4 py-4">
+              <Check className="w-6 h-6 text-[#2DD4BF] shrink-0 mt-0.5" strokeWidth={2.5} />
+              <p className="text-[#E6EDF3]">
+                <strong className="text-lg">{item.title}.</strong>{" "}
+                <span className="text-[#7D8B99]">{item.body}</span>
+              </p>
             </div>
-            <h4 className="text-base font-bold font-display text-[#2DD4BF] uppercase tracking-wider">
-              USO COMPLEMENTARIO VÁLIDO (SÍ)
-            </h4>
-          </div>
-          <ul className="space-y-3 text-sm text-[#E6EDF3]">
-            <li className="flex items-start gap-2">
-              <span className="text-[#2DD4BF] font-bold">✓</span>
-              <span><strong>Resumen de historias clínicas:</strong> Extracción de antecedentes en registros voluminosos con supervisión de fuentes.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-[#2DD4BF] font-bold">✓</span>
-              <span><strong>Traducción a lenguaje profano:</strong> Explicar instrucciones de alta al paciente de forma comprensible.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-[#2DD4BF] font-bold">✓</span>
-              <span><strong>Búsqueda bibliográfica preliminar:</strong> Síntesis rápida de literatura científica vinculada a fuentes PubMed.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-[#2DD4BF] font-bold">✓</span>
-              <span><strong>Reducción de carga administrativa:</strong> Generación de borradores para notas de evolución y codificación ICD-10.</span>
-            </li>
-          </ul>
+          ))}
         </div>
-
-        {/* Usos Inseguros (NO) */}
-        <div className="p-6 rounded-xl bg-[#0E141C] border border-[#FF5A5F]/30">
-          <div className="flex items-center gap-2 mb-4 pb-3 border-b border-[#1C2633]">
-            <div className="w-6 h-6 rounded-full bg-[#FF5A5F]/20 flex items-center justify-center">
-              <X className="w-4 h-4 text-[#FF5A5F]" />
+        <div className="divide-y divide-[#1C2633]">
+          {NO.map((item) => (
+            <div key={item.title} className="flex items-start gap-4 py-4">
+              <X className="w-6 h-6 text-[#FF5A5F] shrink-0 mt-0.5" strokeWidth={2.5} />
+              <p className="text-[#E6EDF3]">
+                <strong className="text-lg">{item.title}.</strong>{" "}
+                <span className="text-[#7D8B99]">{item.body}</span>
+              </p>
             </div>
-            <h4 className="text-base font-bold font-display text-[#FF5A5F] uppercase tracking-wider">
-              USO AUTÓNOMO INSEGURO (NO)
-            </h4>
-          </div>
-          <ul className="space-y-3 text-sm text-[#E6EDF3]">
-            <li className="flex items-start gap-2">
-              <span className="text-[#FF5A5F] font-bold">✗</span>
-              <span><strong>Diagnóstico diferencial no supervisado:</strong> La generación estadística no pondera fisiopatología atípica.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-[#FF5A5F] font-bold">✗</span>
-              <span><strong>Prescripción farmacológica directa:</strong> Riesgo crítico de alucinación posológica o interacciones letales.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-[#FF5A5F] font-bold">✗</span>
-              <span><strong>Triaje de urgencia autónomo:</strong> La priorización requiere evaluación semiológica directa presencial.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-[#FF5A5F] font-bold">✗</span>
-              <span><strong>Sustitución del juicio clínico:</strong> La responsabilidad deontológica no puede delegarse a una matriz de pesos.</span>
-            </li>
-          </ul>
+          ))}
         </div>
       </div>
     </div>

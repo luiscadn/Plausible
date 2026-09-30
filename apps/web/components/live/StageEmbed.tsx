@@ -69,7 +69,7 @@ export default function StageEmbed({ active, reducedMotion, onCaptureKeys }: Sim
     <div
       data-testid="stage-embed-slot"
       data-active={active}
-      className="w-full max-w-6xl mx-auto rounded-xl border border-[#1C2633] bg-[#0E141C] p-6 shadow-2xl flex flex-col gap-6"
+      className="w-full max-w-6xl mx-auto rounded-sm border border-[#1C2633] bg-[#0E141C] p-6 flex flex-col gap-6"
     >
       {/* Status Bar */}
       <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-[#1C2633]">
@@ -133,11 +133,11 @@ export default function StageEmbed({ active, reducedMotion, onCaptureKeys }: Sim
       {/* Main Split: QR & Case / Options */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-stretch">
         {/* QR Section */}
-        <div className="lg:col-span-1 p-5 rounded-xl bg-[#070A0F] border border-[#1C2633] flex flex-col items-center justify-center text-center">
+        <div className="lg:col-span-1 p-5 rounded-sm bg-[#070A0F] border border-[#1C2633] flex flex-col items-center justify-center text-center">
           <span className="font-mono text-xs text-[#2DD4BF] uppercase block mb-3">
             ESCANEA PARA VOTAR
           </span>
-          <div className="p-3 bg-white rounded-lg shadow-lg">
+          <div className="p-3 bg-white rounded-sm shadow-lg">
             <QRCodeSVG value={playUrl} size={130} level="M" />
           </div>
           <span className="font-mono text-[11px] text-[#7D8B99] mt-3 break-all">
@@ -151,7 +151,7 @@ export default function StageEmbed({ active, reducedMotion, onCaptureKeys }: Sim
         {/* Clinical Case & A/B Options */}
         <div className="lg:col-span-3 flex flex-col justify-between gap-4">
           {/* Prompt */}
-          <div className="p-4 rounded-lg bg-[#070A0F] border border-[#1C2633]">
+          <div className="p-4 rounded-sm bg-[#070A0F] border border-[#1C2633]">
             <span className="font-mono text-[11px] text-[#7D8B99] uppercase block mb-1">
               CASO CLÍNICO EN DELIBERACIÓN
             </span>
@@ -165,7 +165,7 @@ export default function StageEmbed({ active, reducedMotion, onCaptureKeys }: Sim
             {/* Option A */}
             <div
               data-testid="option-card-a"
-              className={`p-4 rounded-xl border-2 transition-all flex flex-col justify-between relative overflow-hidden ${
+              className={`p-4 rounded-sm border-2 transition-all flex flex-col justify-between relative overflow-hidden ${
                 isReveal
                   ? currentRound?.correct === "a"
                     ? "bg-[#2DD4BF]/10 border-[#2DD4BF]"
@@ -217,7 +217,7 @@ export default function StageEmbed({ active, reducedMotion, onCaptureKeys }: Sim
             {/* Option B */}
             <div
               data-testid="option-card-b"
-              className={`p-4 rounded-xl border-2 transition-all flex flex-col justify-between relative overflow-hidden ${
+              className={`p-4 rounded-sm border-2 transition-all flex flex-col justify-between relative overflow-hidden ${
                 isReveal
                   ? currentRound?.correct === "b"
                     ? "bg-[#2DD4BF]/10 border-[#2DD4BF]"
@@ -273,7 +273,7 @@ export default function StageEmbed({ active, reducedMotion, onCaptureKeys }: Sim
       {isReveal && (
         <div
           data-testid="reveal-box"
-          className="p-5 rounded-xl bg-[#070A0F] border-2 border-[#2DD4BF]/50 flex flex-col gap-3 animate-fadeIn"
+          className="p-5 rounded-sm bg-[#070A0F] border-2 border-[#2DD4BF]/50 flex flex-col gap-3 animate-fadeIn"
         >
           <div className="flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-[#2DD4BF]" />
@@ -286,7 +286,7 @@ export default function StageEmbed({ active, reducedMotion, onCaptureKeys }: Sim
             {currentRound?.explanation}
           </p>
 
-          <div className="p-3 rounded-lg bg-[#0E141C] border border-[#F5B544]/40 font-mono text-xs text-[#F5B544] flex items-center gap-2">
+          <div className="p-3 rounded-sm bg-[#0E141C] border border-[#F5B544]/40 font-mono text-xs text-[#F5B544] flex items-center gap-2">
             <span className="font-bold">LECCIÓN CLAVE:</span>
             <span>{currentRound?.lesson}</span>
           </div>
@@ -306,7 +306,7 @@ export default function StageEmbed({ active, reducedMotion, onCaptureKeys }: Sim
                 type="button"
                 data-testid="start-round-btn"
                 onClick={startRound}
-                className="px-4 py-2 rounded-lg bg-[#2DD4BF] hover:bg-[#2DD4BF]/80 text-[#070A0F] font-mono text-xs font-bold transition-all cursor-pointer"
+                className="px-4 py-2 rounded-sm bg-[#2DD4BF] hover:bg-[#2DD4BF]/80 text-[#070A0F] font-mono text-xs font-bold transition-all cursor-pointer"
               >
                 [S] Iniciar Votación
               </button>
@@ -317,7 +317,7 @@ export default function StageEmbed({ active, reducedMotion, onCaptureKeys }: Sim
                 type="button"
                 data-testid="reveal-round-btn"
                 onClick={revealRound}
-                className="px-4 py-2 rounded-lg bg-[#F5B544] hover:bg-[#F5B544]/80 text-[#070A0F] font-mono text-xs font-bold transition-all cursor-pointer"
+                className="px-4 py-2 rounded-sm bg-[#F5B544] hover:bg-[#F5B544]/80 text-[#070A0F] font-mono text-xs font-bold transition-all cursor-pointer"
               >
                 [R] Revelar Veredicto
               </button>
@@ -327,7 +327,7 @@ export default function StageEmbed({ active, reducedMotion, onCaptureKeys }: Sim
               type="button"
               data-testid="next-round-btn"
               onClick={nextRound}
-              className="px-3 py-2 rounded-lg bg-[#1C2633] hover:bg-[#2DD4BF]/20 text-[#E6EDF3] hover:text-[#2DD4BF] font-mono text-xs font-bold transition-all border border-[#1C2633] cursor-pointer"
+              className="px-3 py-2 rounded-sm bg-[#1C2633] hover:bg-[#2DD4BF]/20 text-[#E6EDF3] hover:text-[#2DD4BF] font-mono text-xs font-bold transition-all border border-[#1C2633] cursor-pointer"
             >
               [N] Siguiente Ronda
             </button>
@@ -336,7 +336,7 @@ export default function StageEmbed({ active, reducedMotion, onCaptureKeys }: Sim
               type="button"
               data-testid="reset-game-btn"
               onClick={resetGame}
-              className="px-3 py-2 rounded-lg bg-[#1C2633] hover:bg-[#FF5A5F]/20 text-[#E6EDF3] hover:text-[#FF5A5F] font-mono text-xs font-bold transition-all border border-[#1C2633] cursor-pointer"
+              className="px-3 py-2 rounded-sm bg-[#1C2633] hover:bg-[#FF5A5F]/20 text-[#E6EDF3] hover:text-[#FF5A5F] font-mono text-xs font-bold transition-all border border-[#1C2633] cursor-pointer"
             >
               [0] Reset
             </button>

@@ -12,6 +12,9 @@ import { Section09 } from "@/components/deck/Section09";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { WhatsHappening } from "@/components/ui/WhatsHappening";
 import { GlossaryTerm, GLOSSARY } from "@/components/ui/GlossaryTerm";
+import { FigureLabel } from "@/components/ui/FigureLabel";
+import { ProgressRail } from "@/components/ui/ProgressRail";
+import { TokenDiagram } from "@/components/ui/TokenDiagram";
 
 // Slots imported dynamically with ssr: false
 const StageEmbed = dynamic<SimSlotProps>(
@@ -155,62 +158,50 @@ export default function PresentationPage() {
       className="w-full h-screen overflow-y-scroll snap-y snap-mandatory bg-[#070A0F] text-[#E6EDF3] relative"
     >
       {/* Fixed Monitor Status Bar */}
-      <header className="fixed top-0 left-0 right-0 z-50 px-6 py-3 bg-[#070A0F]/85 backdrop-blur-md border-b border-[#1C2633] flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <span className="h-2 w-2 rounded-full bg-[#2DD4BF] animate-pulse" />
-          <span className="font-mono text-xs tracking-wider text-[#2DD4BF] uppercase">
-            PLAUSIBLE CLINICAL DECK // ICESI 2026
-          </span>
-        </div>
-        <div className="flex items-center gap-3 font-mono text-xs text-[#7D8B99]">
-          <span className="px-2 py-0.5 rounded bg-[#1C2633] text-[#2DD4BF]">
-            SECCIÓN {activeSection} / 09
-          </span>
-          <div className="hidden sm:flex items-center gap-1">
-            {SECTION_IDS.map((id) => (
-              <button
-                key={id}
-                onClick={() => goToSection(id)}
-                className={`w-5 h-1.5 rounded-full transition-all ${
-                  activeSection === id ? "bg-[#2DD4BF] w-8" : "bg-[#1C2633] hover:bg-[#7D8B99]"
-                }`}
-                aria-label={`Ir a sección ${id}`}
-              />
-            ))}
-          </div>
-        </div>
+      <header className="fixed top-0 left-0 right-0 z-50 px-6 sm:px-8 h-14 flex items-center justify-between bg-[#070A0F]/90 backdrop-blur-md border-b border-[#1C2633]">
+        <span className="font-mono text-[11px] tracking-wider text-[#7D8B99] uppercase">
+          Plausible <span className="text-[#2DD4BF]">/</span> Icesi 2026
+        </span>
+        <span className="font-mono text-[11px] text-[#7D8B99]">
+          {activeSection} <span className="text-[#1C2633]">/</span> 09
+        </span>
       </header>
+
+      <ProgressRail activeSection={activeSection} sectionIds={SECTION_IDS} onNavigate={goToSection} />
 
       {/* 01: Portada */}
       <section
         id="sec-01"
         data-section-id="01"
-        className="w-full h-[100dvh] snap-start flex items-center justify-center p-6 relative"
+        className="w-full h-[100dvh] snap-start relative"
       >
-        <Section01 />
+        <Section01 active={activeSection === "01"} reducedMotion={reducedMotion} />
       </section>
 
       {/* 02: Fluidez != fiabilidad (Slot Juego en Vivo) */}
       <section
         id="sec-02"
         data-section-id="02"
-        className="w-full h-[100dvh] snap-start flex flex-col justify-center items-center p-6 relative"
+        className="w-full min-h-[100dvh] snap-start flex flex-col p-6 sm:p-10 lg:p-14 pt-24 sm:pt-28 relative"
       >
-        <div className="w-full max-w-6xl mx-auto h-full flex flex-col justify-between py-12">
+        <div className="w-full max-w-[1400px] mx-auto flex flex-col gap-6 flex-1">
           <SectionHeader
             index="02"
-            caveat="Caso ilustrativo — no es consejo médico"
-            title="Fluidez ≠ fiabilidad: ¿Humano o Loro?"
+            caveat="Caso ilustrativo, no es consejo médico"
+            title="Fluidez ≠ fiabilidad"
           />
-          <div className="my-auto w-full">
+          <p className="text-lg text-[#7D8B99] max-w-2xl -mt-2">
+            Experimento en vivo. La audiencia vota: &iquest;eligió por lo que dice la respuesta, o por cómo suena?
+          </p>
+          <div className="w-full flex-1 flex items-center">
             <StageEmbed
               active={activeSection === "02"}
               reducedMotion={reducedMotion}
               onCaptureKeys={setCapturingKeys}
             />
           </div>
-          <div className="border-t border-[#1C2633] pt-2 text-xs font-mono text-[#7D8B99]">
-            Controles: S (iniciar) · R (revelar) · N (siguiente) · 0 (reset)
+          <div className="fig-label">
+            Controles del presentador: S inicia &middot; R revela &middot; N siguiente &middot; 0 reinicia
           </div>
         </div>
       </section>
@@ -219,7 +210,7 @@ export default function PresentationPage() {
       <section
         id="sec-03"
         data-section-id="03"
-        className="w-full h-[100dvh] snap-start flex items-center justify-center p-6 relative"
+        className="w-full min-h-[100dvh] snap-start relative"
       >
         <Section03 />
       </section>
@@ -228,15 +219,16 @@ export default function PresentationPage() {
       <section
         id="sec-04"
         data-section-id="04"
-        className="w-full h-[100dvh] snap-start flex flex-col justify-center items-center p-3 sm:p-6 relative overflow-y-auto overflow-x-hidden"
+        className="w-full min-h-[100dvh] snap-start flex flex-col p-3 sm:p-10 lg:p-14 pt-20 sm:pt-28 relative overflow-y-auto overflow-x-hidden"
       >
-        <div className="w-full max-w-6xl mx-auto min-h-full flex flex-col justify-between py-4 sm:py-8">
+        <div className="w-full max-w-[1400px] mx-auto flex flex-col gap-5 flex-1">
           <SectionHeader
             index="04"
-            caveat="Caso ilustrativo — no es consejo médico"
-            title="Los LLM predicen palabras, no razonan: el Loro Estocástico"
+            caveat="Caso ilustrativo, no es consejo médico"
+            title="Predice palabras, no razona"
           />
-          <div className="my-auto w-full">
+          <TokenDiagram />
+          <div className="w-full flex-1 flex items-center">
             <ParrotSim
               active={activeSection === "04"}
               reducedMotion={reducedMotion}
@@ -244,9 +236,7 @@ export default function PresentationPage() {
             />
           </div>
           <div>
-            <div className="border-t border-[#1C2633] pt-2 text-xs font-mono text-[#7D8B99]">
-              Simulador probabilístico basado en Bender et al.
-            </div>
+            <FigureLabel fig="FIG. 04" caption="Muestreo token a token, temperatura softmax" />
             <WhatsHappening>
               El modelo elige el <GlossaryTerm term="token" definition={GLOSSARY.token}>token</GlossaryTerm> más{" "}
               <GlossaryTerm term="probabilidad" definition={GLOSSARY.probabilidad}>probable</GlossaryTerm>, no el más
@@ -261,15 +251,18 @@ export default function PresentationPage() {
       <section
         id="sec-05"
         data-section-id="05"
-        className="w-full h-[100dvh] snap-start flex flex-col justify-center items-center p-3 sm:p-6 relative overflow-y-auto overflow-x-hidden"
+        className="w-full min-h-[100dvh] snap-start flex flex-col p-3 sm:p-10 lg:p-14 pt-20 sm:pt-28 relative overflow-y-auto overflow-x-hidden"
       >
-        <div className="w-full max-w-6xl mx-auto min-h-full flex flex-col justify-between py-4 sm:py-8">
+        <div className="w-full max-w-[1400px] mx-auto flex flex-col gap-5 flex-1">
           <SectionHeader
             index="05"
-            caveat="Caso ilustrativo — no es consejo médico"
-            title="Sesgos y opacidad persisten: Torre de Validación Monte Carlo"
+            caveat="Caso ilustrativo, no es consejo médico"
+            title="El sesgo persiste, y es opaco"
           />
-          <div className="my-auto w-full">
+          <p className="text-lg text-[#7D8B99] max-w-2xl -mt-2">
+            Más capas ayudan, solo si no comparten los mismos errores.
+          </p>
+          <div className="w-full flex-1 flex items-center">
             <TowerSim
               active={activeSection === "05"}
               reducedMotion={reducedMotion}
@@ -277,13 +270,12 @@ export default function PresentationPage() {
             />
           </div>
           <div>
-            <div className="border-t border-[#1C2633] pt-2 text-xs font-mono text-[#7D8B99]">
-              Simulación Canvas 2D: propagación y correlación de error en capas
-            </div>
+            <FigureLabel fig="FIG. 05" caption="Propagación y correlación de error entre capas validadoras" />
             <WhatsHappening>
               Cada capa de validación hereda el{" "}
               <GlossaryTerm term="sesgo" definition={GLOSSARY.sesgo}>sesgo</GlossaryTerm> de la anterior y puede
-              amplificarlo. Más capas no eliminan el error si está correlacionado entre ellas.
+              amplificarlo. Más capas no eliminan el error si está{" "}
+              <GlossaryTerm term="correlación de errores" definition={GLOSSARY["correlación de errores"]}>correlacionado</GlossaryTerm> entre ellas.
             </WhatsHappening>
           </div>
         </div>
@@ -293,7 +285,7 @@ export default function PresentationPage() {
       <section
         id="sec-06"
         data-section-id="06"
-        className="w-full h-[100dvh] snap-start flex items-center justify-center p-6 relative"
+        className="w-full h-[100dvh] snap-start relative"
       >
         <Section06 />
       </section>
@@ -302,7 +294,7 @@ export default function PresentationPage() {
       <section
         id="sec-07"
         data-section-id="07"
-        className="w-full h-[100dvh] snap-start flex items-center justify-center p-6 relative"
+        className="w-full h-[100dvh] snap-start relative"
       >
         <Section07 />
       </section>
@@ -311,7 +303,7 @@ export default function PresentationPage() {
       <section
         id="sec-08"
         data-section-id="08"
-        className="w-full h-[100dvh] snap-start flex items-center justify-center p-6 relative"
+        className="w-full h-[100dvh] snap-start relative"
       >
         <Section08 />
       </section>
@@ -320,7 +312,7 @@ export default function PresentationPage() {
       <section
         id="sec-09"
         data-section-id="09"
-        className="w-full h-[100dvh] snap-start flex items-center justify-center p-6 relative"
+        className="w-full h-[100dvh] snap-start relative"
       >
         <Section09 />
       </section>

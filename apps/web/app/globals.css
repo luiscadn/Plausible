@@ -100,24 +100,47 @@ a:focus-visible {
   outline-offset: 2px;
 }
 
-/* --- Escala tipográfica y ritmo (Fase D: sistema global) ---
-   3 niveles de título en todo el deck: hero (solo 01), section (02-09),
-   label (badges/eyebrows). Antes había 4 tamaños distintos para
-   "section title" (text-xl/2xl/4xl/5xl mezclados) sin razón semántica. */
-.title-hero {
+/* --- Lenguaje editorial-instrumentación ---
+   "Monitor clínico nocturno x revista científica": cada sección es la
+   lámina de un paper, no una diapositiva de marketing. Título grande
+   alineado a la izquierda (nunca centrado), watermark de número de
+   sección, etiquetas de figura sobre hairlines (sin pills ni puntos). */
+.display-title {
   font-family: var(--font-display);
   font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.05;
-  font-size: clamp(2.25rem, 3.2vw + 1.5rem, 4.5rem);
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+  font-size: clamp(2.5rem, 3.6vw + 1.6rem, 5.75rem);
 }
 
-.title-section {
+.display-title-lg {
   font-family: var(--font-display);
   font-weight: 700;
-  letter-spacing: -0.01em;
-  line-height: 1.15;
-  font-size: clamp(1.5rem, 1.6vw + 1.1rem, 2.5rem);
+  letter-spacing: -0.035em;
+  line-height: 0.96;
+  font-size: clamp(2.75rem, 5vw + 1.5rem, 6.5rem);
+}
+
+.section-number-mark {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: clamp(7rem, 14vw, 15rem);
+  line-height: 1;
+  color: var(--line);
+  opacity: 0.55;
+  pointer-events: none;
+  user-select: none;
+}
+
+.fig-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+  display: block;
 }
 
 .eyebrow {
@@ -132,6 +155,26 @@ a:focus-visible {
 .stack-16 > * + * { margin-top: 16px; }
 .stack-24 > * + * { margin-top: 24px; }
 .stack-32 > * + * { margin-top: 32px; }
+
+/* Barra de probabilidad / medición: crece con significado, sin track de fondo */
+@keyframes grow-bar {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.measure-bar {
+  transform-origin: left;
+  animation: grow-bar 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Cursor de escritura token a token */
+@keyframes caret-blink {
+  0%, 45% { opacity: 1; }
+  50%, 95% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.type-caret {
+  animation: caret-blink 1s step-end infinite;
+}
 
 /* --- Glosario: tooltip accesible (teclado + táctil) --- */
 .glossary-term {
@@ -155,7 +198,7 @@ a:focus-visible {
   padding: 8px 12px;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 2px;
   font-family: var(--font-body);
   font-size: 0.8rem;
   line-height: 1.35;

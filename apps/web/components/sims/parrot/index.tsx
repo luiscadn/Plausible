@@ -97,7 +97,7 @@ export default function ParrotSim({ active, reducedMotion, onCaptureKeys }: SimS
     <div
       data-testid="parrot-sim-slot"
       data-active={active}
-      className="w-full max-w-5xl mx-auto rounded-xl border border-[#1C2633] bg-[#0E141C] p-6 shadow-2xl flex flex-col gap-6"
+      className="w-full max-w-5xl mx-auto rounded-sm border border-[#1C2633] bg-[#0E141C] p-6 flex flex-col gap-6"
     >
       {/* Header and Case Tag */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-[#1C2633]">
@@ -109,13 +109,13 @@ export default function ParrotSim({ active, reducedMotion, onCaptureKeys }: SimS
             {parrotData.meta.title}
           </h4>
         </div>
-        <span className="font-mono text-xs px-2.5 py-1 rounded bg-[#1C2633] text-[#F5B544] border border-[#F5B544]/20">
+        <span className="font-mono text-xs text-[#F5B544]">
           {parrotData.meta.disclaimer}
         </span>
       </div>
 
       {/* Generated Clinical Text Box */}
-      <div className="relative min-h-[120px] p-5 rounded-lg bg-[#070A0F] border border-[#1C2633] font-body text-base text-[#E6EDF3] leading-relaxed flex flex-col justify-between">
+      <div className="relative min-h-[120px] p-5 rounded-sm bg-[#070A0F] border border-[#1C2633] font-body text-base text-[#E6EDF3] leading-relaxed flex flex-col justify-between">
         <p>
           {history.map((tok, i) => (
             <span
@@ -136,7 +136,7 @@ export default function ParrotSim({ active, reducedMotion, onCaptureKeys }: SimS
         {hasFalseStamp && (
           <div
             data-testid="false-stamp"
-            className="absolute top-4 right-4 z-20 px-4 py-2 rounded-lg bg-[#FF5A5F]/20 border-2 border-[#FF5A5F] text-[#FF5A5F] font-mono font-bold text-xs uppercase flex items-center gap-2 shadow-2xl rotate-[-2deg] animate-bounce"
+            className="absolute top-4 right-4 z-20 px-4 py-2 rounded-sm bg-[#FF5A5F]/20 border-2 border-[#FF5A5F] text-[#FF5A5F] font-mono font-bold text-xs uppercase flex items-center gap-2 rotate-[-2deg] animate-bounce"
           >
             <AlertOctagon className="w-4 h-4 shrink-0" />
             <span>NADIE VERIFICÓ ESTO</span>
@@ -164,7 +164,7 @@ export default function ParrotSim({ active, reducedMotion, onCaptureKeys }: SimS
                 type="button"
                 data-testid={`candidate-btn-${idx}`}
                 onClick={() => selectCandidate(cand)}
-                className="group relative text-left p-3.5 rounded-lg bg-[#070A0F] border border-[#1C2633] hover:border-[#2DD4BF] transition-all overflow-hidden cursor-pointer"
+                className="group relative text-left p-3.5 rounded-sm bg-[#070A0F] border border-[#1C2633] hover:border-[#2DD4BF] transition-all overflow-hidden cursor-pointer"
               >
                 {/* Background probability fill */}
                 <div
@@ -221,7 +221,7 @@ export default function ParrotSim({ active, reducedMotion, onCaptureKeys }: SimS
             type="button"
             data-testid="autoplay-btn"
             onClick={() => setIsAutoPlay(!isAutoPlay)}
-            className="px-4 py-2 rounded-lg bg-[#1C2633] hover:bg-[#2DD4BF]/20 text-[#E6EDF3] hover:text-[#2DD4BF] font-mono text-xs font-bold transition-all flex items-center gap-2 border border-[#1C2633]"
+            className="px-4 py-2 rounded-sm bg-[#1C2633] hover:bg-[#2DD4BF]/20 text-[#E6EDF3] hover:text-[#2DD4BF] font-mono text-xs font-bold transition-all flex items-center gap-2 border border-[#1C2633]"
           >
             {isAutoPlay ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
             <span>{isAutoPlay ? "Pausar" : "Auto-play"}</span>
@@ -231,7 +231,7 @@ export default function ParrotSim({ active, reducedMotion, onCaptureKeys }: SimS
             type="button"
             data-testid="reset-btn"
             onClick={handleReset}
-            className="px-4 py-2 rounded-lg bg-[#1C2633] hover:bg-[#FF5A5F]/20 text-[#E6EDF3] hover:text-[#FF5A5F] font-mono text-xs font-bold transition-all flex items-center gap-2 border border-[#1C2633]"
+            className="px-4 py-2 rounded-sm bg-[#1C2633] hover:bg-[#FF5A5F]/20 text-[#E6EDF3] hover:text-[#FF5A5F] font-mono text-xs font-bold transition-all flex items-center gap-2 border border-[#1C2633]"
           >
             <RotateCcw className="w-3.5 h-3.5" />
             <span>Reiniciar</span>

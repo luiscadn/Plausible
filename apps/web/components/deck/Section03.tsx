@@ -1,67 +1,44 @@
 import React from "react";
-import { CheckCircle2, AlertTriangle } from "lucide-react";
+import { Check, TriangleAlert } from "lucide-react";
+import { SectionNumberMark } from "@/components/ui/SectionNumberMark";
 
 export const Section03: React.FC = () => {
   return (
-    <div className="flex flex-col justify-center h-full max-w-5xl mx-auto py-6">
-      <div className="mb-6">
-        <p className="eyebrow text-[#2DD4BF] mb-2">
-          TESIS CENTRAL // HICKS ET AL.
-        </p>
-        <h3 className="title-section text-[#E6EDF3]">
-          El término «alucinación» es un error conceptual: es indiferencia algorítmica a la verdad
+    <div className="relative h-full w-full flex flex-col justify-center px-6 sm:px-10 lg:px-14 py-16">
+      <SectionNumberMark index="03" className="absolute top-6 right-6 sm:right-10" />
+
+      <div className="max-w-5xl">
+        <p className="font-mono text-[11px] text-[#7D8B99] mb-3">Tesis central, Hicks et al.</p>
+        <h3 className="display-title text-[#E6EDF3] max-w-3xl">
+          &laquo;Alucinación&raquo; es el nombre equivocado: es indiferencia a la verdad
         </h3>
-        <p className="text-[#7D8B99] mt-2 text-sm sm:text-base">
-          Antropomorfizar el error computacional como una "alucinación" enmascara que el modelo nunca intentó decir la verdad: solo optimizó la plausibilidad sintáctica.
+        <p className="text-xl text-[#E6EDF3] mt-5 max-w-3xl">
+          Un LLM no miente ni dice la verdad. No sabe que existe la diferencia.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Card: Lo que garantiza */}
-        <div className="p-6 rounded-xl bg-[#0E141C] border border-[#2DD4BF]/40 relative overflow-hidden">
-          <div className="flex items-center gap-3 mb-4">
-            <CheckCircle2 className="w-6 h-6 text-[#2DD4BF]" />
-            <h4 className="text-lg font-bold font-display text-[#2DD4BF]">
-              Lo que la arquitectura garantiza
-            </h4>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 mt-12 max-w-5xl">
+        <div className="border-l-2 border-[#2DD4BF] pl-6">
+          <div className="flex items-center gap-2 mb-4">
+            <Check className="w-5 h-5 text-[#2DD4BF]" strokeWidth={2} />
+            <h4 className="font-display font-bold text-lg text-[#2DD4BF]">Lo que garantiza</h4>
           </div>
-          <ul className="space-y-3 text-sm text-[#E6EDF3]">
-            <li className="flex items-start gap-2">
-              <span className="font-mono text-[#2DD4BF]">•</span>
-              <span><strong>Fluidez sintáctica impecable:</strong> Frases gramaticalmente perfectas y vocabulario médico de alta densidad.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="font-mono text-[#2DD4BF]">•</span>
-              <span><strong>Consistencia tonal:</strong> Autoridad y seguridad persuasiva en cualquier aseveración.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="font-mono text-[#2DD4BF]">•</span>
-              <span><strong>Alineación estadística superficial:</strong> Palabras frecuentes en corpus de entrenamiento coexisten juntas.</span>
-            </li>
+          <ul className="space-y-4 text-[#E6EDF3]">
+            <li><strong>Fluidez sintáctica impecable.</strong> Frases gramaticalmente perfectas, vocabulario médico de alta densidad.</li>
+            <li><strong>Consistencia tonal.</strong> Autoridad y seguridad persuasiva en cualquier aseveración.</li>
+            <li><strong>Alineación estadística superficial.</strong> Palabras que coexisten con frecuencia en el corpus de entrenamiento.</li>
           </ul>
         </div>
 
-        {/* Card: Lo que NO garantiza */}
-        <div className="p-6 rounded-xl bg-[#0E141C] border border-[#FF5A5F]/40 relative overflow-hidden">
-          <div className="flex items-center gap-3 mb-4">
-            <AlertTriangle className="w-6 h-6 text-[#FF5A5F]" />
-            <h4 className="text-lg font-bold font-display text-[#FF5A5F]">
-              Lo que el modelo NO garantiza
-            </h4>
+        <div className="border-l-2 border-[#FF5A5F] pl-6">
+          <div className="flex items-center gap-2 mb-4">
+            <TriangleAlert className="w-5 h-5 text-[#FF5A5F]" strokeWidth={2} />
+            <h4 className="font-display font-bold text-lg text-[#FF5A5F]">Lo que NO garantiza</h4>
           </div>
-          <ul className="space-y-3 text-sm text-[#E6EDF3]">
-            <li className="flex items-start gap-2">
-              <span className="font-mono text-[#FF5A5F]">•</span>
-              <span><strong>Anclaje empírico:</strong> Ningún mecanismo contrasta el token con el estado fisiopatológico real del paciente.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="font-mono text-[#FF5A5F]">•</span>
-              <span><strong>Razonamiento causal:</strong> Incapacidad de deducir interacciones farmacológicas no correlacionadas.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="font-mono text-[#FF5A5F]">•</span>
-              <span><strong>Veracidad clínica:</strong> La verdad factual es indiferente al objetivo de pérdida durante el entrenamiento.</span>
-            </li>
+          <ul className="space-y-4 text-[#E6EDF3]">
+            <li><strong>Anclaje empírico.</strong> Ningún mecanismo contrasta el token con el estado real del paciente.</li>
+            <li><strong>Razonamiento causal.</strong> No deduce interacciones farmacológicas no vistas antes.</li>
+            <li><strong>Veracidad clínica.</strong> La verdad factual es indiferente al objetivo de entrenamiento.</li>
           </ul>
         </div>
       </div>

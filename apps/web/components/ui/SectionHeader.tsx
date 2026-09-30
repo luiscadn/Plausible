@@ -1,4 +1,5 @@
 import React from "react";
+import { SectionNumberMark } from "@/components/ui/SectionNumberMark";
 
 interface SectionHeaderProps {
   index: string;
@@ -7,22 +8,20 @@ interface SectionHeaderProps {
 }
 
 /**
- * Cabecera estándar de sección: badge de índice + caveat clínico + título.
- * Unifica la escala tipográfica (antes: text-xl/2xl/4xl/5xl mezclados
- * entre secciones 02/04/05 sin razón semántica).
+ * Cabecera editorial: numero de seccion como marca de agua detras del
+ * titulo, titulo grande alineado a la izquierda, caveat clinico como
+ * texto plano (sin pill, sin punto pulsante).
  */
 export const SectionHeader: React.FC<SectionHeaderProps> = ({ index, title, caveat }) => {
   return (
-    <div>
-      <div className="flex items-center justify-between mb-2">
-        <span className="eyebrow px-2.5 py-1 rounded bg-[#1C2633] text-[#2DD4BF]">
-          Sección {index} / 09
-        </span>
+    <div className="relative">
+      <SectionNumberMark index={index} className="absolute -top-6 right-0 sm:right-4" />
+      <div className="relative">
         {caveat && (
-          <span className="text-xs font-mono text-[#F5B544]">{caveat}</span>
+          <p className="font-mono text-[11px] text-[#F5B544] mb-3">{caveat}</p>
         )}
+        <h2 className="display-title text-[#E6EDF3] max-w-4xl">{title}</h2>
       </div>
-      <h2 className="title-section text-[#E6EDF3]">{title}</h2>
     </div>
   );
 };

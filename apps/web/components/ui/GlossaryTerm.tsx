@@ -49,4 +49,7 @@ export const GLOSSARY: Record<string, string> = {
   temperatura: "Un control que decide qué tan predecible o variado es el texto generado. Baja = elige casi siempre lo más probable; alta = se arriesga con opciones menos comunes.",
   alucinación: "Cuando el modelo genera una afirmación falsa con la misma fluidez que una verdadera. No es un error técnico raro: es el comportamiento normal del sistema aplicado a datos que no garantizan veracidad.",
   sesgo: "Un patrón injusto o desbalanceado heredado de los datos de entrenamiento, que el modelo reproduce sin saber que lo está haciendo.",
+  "correlación de errores": "Cuando varios filtros o capas fallan por la misma razón. Sumar más capas no ayuda si todas comparten el mismo punto ciego, como pedir tres opiniones a personas que leyeron el mismo artículo.",
+  xai: "Inteligencia artificial explicable: técnicas que muestran qué patrones estadísticos usó el modelo. Explican el cómo, no si la conclusión es correcta.",
+  neurosimbólica: "Un enfoque que combina redes neuronales con reglas lógicas explícitas. Más control, pero rígido frente a la ambigüedad real de un caso clínico.",
 };
