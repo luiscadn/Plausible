@@ -15,6 +15,7 @@ import { GlossaryTerm, GLOSSARY } from "@/components/ui/GlossaryTerm";
 import { FigureLabel } from "@/components/ui/FigureLabel";
 import { ProgressRail } from "@/components/ui/ProgressRail";
 import { TokenDiagram } from "@/components/ui/TokenDiagram";
+import { SolutionsTable } from "@/components/ui/SolutionsTable";
 
 // Slots imported dynamically with ssr: false
 const StageEmbed = dynamic<SimSlotProps>(
@@ -278,6 +279,7 @@ export default function PresentationPage() {
               <GlossaryTerm term="correlación de errores" definition={GLOSSARY["correlación de errores"]}>correlacionado</GlossaryTerm> entre ellas.
             </WhatsHappening>
           </div>
+          <SolutionsTable />
         </div>
       </section>
 
