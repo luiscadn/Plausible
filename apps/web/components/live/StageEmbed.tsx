@@ -293,6 +293,20 @@ export default function StageEmbed({ active, reducedMotion, onCaptureKeys }: Sim
         </div>
       )}
 
+      {/* Sin clave de presentador los controles no existen y `startRound` no
+          emite nada: sin este aviso la pantalla se queda en lobby en silencio
+          y la audiencia ve "esperando al presentador" para siempre. */}
+      {!adminKey && (
+        <div
+          data-testid="readonly-hint"
+          className="pt-4 border-t border-[#E4E4DE] font-mono text-xs text-[#B45309]"
+        >
+          Modo solo lectura: la votación no puede abrirse desde aquí. Abre esta página como
+          presentador con <span className="font-bold">?key=TU_ADMIN_KEY</span> en la URL
+          (por ejemplo <span className="font-bold">/stage?key=...</span>) para habilitar los controles.
+        </div>
+      )}
+
       {/* Presenter Action Controls Bar */}
       {adminKey && (
         <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-[#E4E4DE]">
