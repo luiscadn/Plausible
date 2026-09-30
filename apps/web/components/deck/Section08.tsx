@@ -18,10 +18,10 @@ export const Section08: React.FC = () => {
   return (
     <div className="flex flex-col justify-center h-full max-w-5xl mx-auto py-6">
       <div className="mb-4">
-        <p className="font-mono text-xs text-[#2DD4BF] uppercase tracking-wider mb-1">
+        <p className="eyebrow text-[#2DD4BF] mb-1">
           PROPUESTA ESTRUCTURAL // CONCLUSIÓN
         </p>
-        <h3 className="text-2xl sm:text-3xl font-bold font-display text-[#E6EDF3]">
+        <h3 className="title-section text-[#E6EDF3]">
           Sin validación clínica rigurosa no hay adopción segura
         </h3>
       </div>

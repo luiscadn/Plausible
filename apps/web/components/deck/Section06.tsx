@@ -9,10 +9,10 @@ export const Section06: React.FC = () => {
   return (
     <div className="flex flex-col justify-center h-full max-w-5xl mx-auto py-6">
       <div className="mb-6">
-        <p className="font-mono text-xs text-[#F5B544] uppercase tracking-wider mb-2">
+        <p className="eyebrow text-[#F5B544] mb-2">
           ÉTICA DELEGADA & ASIMETRÍA LEGAL // BÉLISLE-PIPON 2024
         </p>
-        <h3 className="text-2xl sm:text-3xl font-bold font-display text-[#E6EDF3]">
+        <h3 className="title-section text-[#E6EDF3]">
           La desregulación y el cabildeo trasladan el 100% del riesgo legal al médico
         </h3>
         <p className="text-[#7D8B99] mt-2 text-sm sm:text-base">

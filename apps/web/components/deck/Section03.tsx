@@ -5,10 +5,10 @@ export const Section03: React.FC = () => {
   return (
     <div className="flex flex-col justify-center h-full max-w-5xl mx-auto py-6">
       <div className="mb-6">
-        <p className="font-mono text-xs text-[#2DD4BF] uppercase tracking-wider mb-2">
+        <p className="eyebrow text-[#2DD4BF] mb-2">
           TESIS CENTRAL // HICKS ET AL.
         </p>
-        <h3 className="text-2xl sm:text-3xl font-bold font-display text-[#E6EDF3]">
+        <h3 className="title-section text-[#E6EDF3]">
           El término «alucinación» es un error conceptual: es indiferencia algorítmica a la verdad
         </h3>
         <p className="text-[#7D8B99] mt-2 text-sm sm:text-base">
