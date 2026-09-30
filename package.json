@@ -7,6 +7,7 @@
     "dev:web": "pnpm --filter @plausible/web dev",
     "dev:live": "pnpm --filter @plausible/live dev",
     "build": "pnpm --filter @plausible/content build && pnpm --filter @plausible/live build && pnpm --filter @plausible/web build",
+    "start": "pnpm --filter @plausible/live start",
     "typecheck": "pnpm -r --parallel typecheck",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui"
