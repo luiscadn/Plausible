@@ -51,7 +51,7 @@ export default function PlayPage() {
       {/* Main Body */}
       <div className="py-4 flex flex-col gap-4 my-auto">
         {/* Clinical Scenario Box */}
-        <div className="p-4 rounded-xl bg-[#0E141C] border border-[#1C2633]">
+        <div className="p-4 rounded-sm bg-[#0E141C] border border-[#1C2633]">
           <span className="font-mono text-[10px] text-[#7D8B99] uppercase block mb-1">
             CASO CLÍNICO EN CURSO
           </span>
@@ -64,7 +64,7 @@ export default function PlayPage() {
 
         {/* Voting State feedback banner */}
         {!isVoting && !isReveal && (
-          <div className="p-3 rounded-lg bg-[#1C2633]/60 text-center font-mono text-xs text-[#7D8B99]">
+          <div className="p-3 rounded-sm bg-[#1C2633]/60 text-center font-mono text-xs text-[#7D8B99]">
             Esperando a que el presentador abra la votación...
           </div>
         )}
@@ -72,7 +72,7 @@ export default function PlayPage() {
         {hasVoted && isVoting && (
           <div
             data-testid="vote-confirmation"
-            className="p-3 rounded-lg bg-[#2DD4BF]/15 border border-[#2DD4BF]/40 text-center font-mono text-xs text-[#2DD4BF] flex items-center justify-center gap-2 animate-fadeIn"
+            className="p-3 rounded-sm bg-[#2DD4BF]/15 border border-[#2DD4BF]/40 text-center font-mono text-xs text-[#2DD4BF] flex items-center justify-center gap-2 animate-fadeIn"
           >
             <ShieldCheck className="w-4 h-4" />
             <span>¡Tu voto para Opción {userChoice?.toUpperCase()} fue recibido!</span>
@@ -87,7 +87,7 @@ export default function PlayPage() {
             data-testid="vote-btn-a"
             disabled={!isVoting || hasVoted}
             onClick={() => vote("a")}
-            className={`w-full min-h-[72px] p-4 rounded-xl border-2 text-left transition-all relative overflow-hidden cursor-pointer ${getOptionStyle("a")}`}
+            className={`w-full min-h-[72px] p-4 rounded-sm border-2 text-left transition-all relative overflow-hidden cursor-pointer ${getOptionStyle("a")}`}
           >
             <div className="flex items-center justify-between mb-1">
               <span className="font-mono text-xs font-bold text-[#2DD4BF]">
@@ -110,7 +110,7 @@ export default function PlayPage() {
             data-testid="vote-btn-b"
             disabled={!isVoting || hasVoted}
             onClick={() => vote("b")}
-            className={`w-full min-h-[72px] p-4 rounded-xl border-2 text-left transition-all relative overflow-hidden cursor-pointer ${getOptionStyle("b")}`}
+            className={`w-full min-h-[72px] p-4 rounded-sm border-2 text-left transition-all relative overflow-hidden cursor-pointer ${getOptionStyle("b")}`}
           >
             <div className="flex items-center justify-between mb-1">
               <span className="font-mono text-xs font-bold text-[#2DD4BF]">
@@ -132,7 +132,7 @@ export default function PlayPage() {
         {isReveal && (
           <div
             data-testid="mobile-reveal-card"
-            className="p-4 rounded-xl bg-[#0E141C] border border-[#2DD4BF]/40 text-xs flex flex-col gap-2 animate-fadeIn"
+            className="p-4 rounded-sm bg-[#0E141C] border border-[#2DD4BF]/40 text-xs flex flex-col gap-2 animate-fadeIn"
           >
             <div className="flex items-center gap-1.5 font-bold font-mono text-[#2DD4BF]">
               {userChoice === currentRound?.correct ? (
