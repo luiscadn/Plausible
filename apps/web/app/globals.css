@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #070A0F;
-  --color-surface: #0E141C;
-  --color-line: #1C2633;
-  --color-text: #E6EDF3;
-  --color-muted: #7D8B99;
-  --color-truth: #2DD4BF;
-  --color-false: #FF5A5F;
-  --color-uncertain: #F5B544;
+  --color-bg: #FAFAF7;
+  --color-surface: #FFFFFF;
+  --color-line: #E4E4DE;
+  --color-text: #14161A;
+  --color-muted: #5E646C;
+  --color-truth: #0F766E;
+  --color-false: #C2410C;
+  --color-uncertain: #B45309;
 
   --font-display: var(--font-space-grotesk), system-ui, sans-serif;
   --font-body: var(--font-inter), system-ui, sans-serif;
@@ -16,14 +16,14 @@
 }
 
 :root {
-  --bg: #070A0F;
-  --surface: #0E141C;
-  --line: #1C2633;
-  --text: #E6EDF3;
-  --muted: #7D8B99;
-  --truth: #2DD4BF;
-  --false: #FF5A5F;
-  --uncertain: #F5B544;
+  --bg: #FAFAF7;
+  --surface: #FFFFFF;
+  --line: #E4E4DE;
+  --text: #14161A;
+  --muted: #5E646C;
+  --truth: #0F766E;
+  --false: #C2410C;
+  --uncertain: #B45309;
 }
 
 * {
@@ -41,25 +41,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Subtle background grain simulation */
+/* Retícula milimetrada muy tenue: textura de cuaderno de laboratorio */
 .bg-grain {
-  background-image: radial-gradient(rgba(45, 212, 191, 0.04) 1px, transparent 1px),
-    radial-gradient(rgba(255, 90, 95, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-  background-position: 0 0, 20px 20px;
-}
-
-/* Glow effects */
-.glow-truth {
-  box-shadow: 0 0 24px -4px rgba(45, 212, 191, 0.35);
-}
-
-.glow-false {
-  box-shadow: 0 0 24px -4px rgba(255, 90, 95, 0.35);
-}
-
-.glow-ambient {
-  box-shadow: 0 0 40px -10px rgba(45, 212, 191, 0.15);
+  background-image: radial-gradient(rgba(20, 22, 26, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: 0 0;
 }
 
 /* ECG pulse animation */
@@ -96,8 +82,35 @@ body {
 button:focus-visible,
 input:focus-visible,
 a:focus-visible {
-  outline: 2px solid #2DD4BF;
+  outline: 2px solid #0F766E;
   outline-offset: 2px;
+}
+
+/* --- Sistema de movimiento (principios de Emil Kowalski) ---
+   Solo transform/opacity. ease-out para entradas, nunca ease-in.
+   Microinteracciones <=250ms, transiciones de sección <=400ms. */
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+button,
+a,
+input[type="range"],
+.glossary-term {
+  transition: transform 0.15s var(--ease-out), opacity 0.15s var(--ease-out), color 0.15s var(--ease-out),
+    border-color 0.15s var(--ease-out), background-color 0.15s var(--ease-out);
+}
+
+button:active,
+[role="button"]:active {
+  transform: scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button:active,
+  [role="button"]:active {
+    transform: none;
+  }
 }
 
 /* --- Lenguaje editorial-instrumentación ---
@@ -163,7 +176,7 @@ a:focus-visible {
 }
 .measure-bar {
   transform-origin: left;
-  animation: grow-bar 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: grow-bar 0.5s var(--ease-out) forwards;
 }
 
 /* Cursor de escritura token a token */
@@ -184,7 +197,7 @@ a:focus-visible {
 }
 
 .glossary-term:focus-visible {
-  outline: 2px solid #2DD4BF;
+  outline: 2px solid #0F766E;
   outline-offset: 2px;
 }
 
@@ -192,22 +205,23 @@ a:focus-visible {
   position: absolute;
   left: 50%;
   bottom: calc(100% + 8px);
-  transform: translateX(-50%) translateY(4px);
+  transform: translateX(-50%) translateY(2px) scale(0.96);
+  transform-origin: bottom center;
   width: max-content;
   max-width: 260px;
   padding: 8px 12px;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 2px;
+  border-radius: 4px;
   font-family: var(--font-body);
   font-size: 0.8rem;
   line-height: 1.35;
   color: var(--text);
-  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 8px 20px -6px rgba(20, 22, 26, 0.16);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.18s ease, transform 0.18s ease;
+  transition: opacity 0.12s var(--ease-out), transform 0.12s var(--ease-out);
   z-index: 60;
 }
 
@@ -216,7 +230,7 @@ a:focus-visible {
 .glossary-term[data-open="true"] .glossary-tooltip {
   opacity: 1;
   visibility: visible;
-  transform: translateX(-50%) translateY(0);
+  transform: translateX(-50%) translateY(0) scale(1);
   pointer-events: auto;
 }
 

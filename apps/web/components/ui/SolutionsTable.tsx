@@ -28,17 +28,17 @@ export const SolutionsTable: React.FC = () => {
   return (
     <div>
       <FigureLabel fig="FIG. 05B" caption="Tres soluciones evaluadas" />
-      <div className="mt-4 divide-y divide-[#1C2633]">
-        <div className="hidden sm:grid grid-cols-[1fr_1.4fr_1.4fr] gap-6 pb-2 font-mono text-[11px] uppercase tracking-wider text-[#7D8B99]">
+      <div className="mt-4 divide-y divide-[#E4E4DE]">
+        <div className="hidden sm:grid grid-cols-[1fr_1.4fr_1.4fr] gap-6 pb-2 font-mono text-[11px] uppercase tracking-wider text-[#5E646C]">
           <span>Solución</span>
           <span>Promete</span>
           <span>Límite</span>
         </div>
         {ROWS.map((row, i) => (
           <div key={i} className="grid grid-cols-1 sm:grid-cols-[1fr_1.4fr_1.4fr] gap-2 sm:gap-6 py-4">
-            <span className="font-display font-bold text-[#E6EDF3]">{row.solution}</span>
-            <span className="text-sm text-[#2DD4BF]">{row.promise}</span>
-            <span className="text-sm text-[#FF5A5F]">{row.limit}</span>
+            <span className="font-display font-bold text-[#14161A]">{row.solution}</span>
+            <span className="text-sm text-[#0F766E]">{row.promise}</span>
+            <span className="text-sm text-[#C2410C]">{row.limit}</span>
           </div>
         ))}
       </div>

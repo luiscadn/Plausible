@@ -16,7 +16,7 @@ export const Section01: React.FC<Section01Props> = ({ active = true, reducedMoti
       <SectionNumberMark index="01" className="absolute top-6 right-6 sm:right-10" />
 
       <div className="max-w-4xl">
-        <h1 className="display-title-lg text-[#E6EDF3] min-h-[2.1em] sm:min-h-[1.1em]">
+        <h1 className="display-title-lg text-[#14161A] min-h-[2.1em] sm:min-h-[1.1em]">
           <TokenTyper
             text="¿Confiarías en esta respuesta?"
             active={active}
@@ -25,7 +25,7 @@ export const Section01: React.FC<Section01Props> = ({ active = true, reducedMoti
           />
         </h1>
 
-        <p className="text-lg sm:text-xl text-[#7D8B99] mt-6 font-display italic">
+        <p className="text-lg sm:text-xl text-[#5E646C] mt-6 font-display italic">
           &ldquo;Sonar bien no es estar bien.&rdquo;
         </p>
 
@@ -33,14 +33,14 @@ export const Section01: React.FC<Section01Props> = ({ active = true, reducedMoti
           <EcgDivider variant="truth" height={24} />
         </div>
 
-        <div className="mt-10 pt-5 border-t border-[#1C2633] flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+        <div className="mt-10 pt-5 border-t border-[#E4E4DE] flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
           <div>
             <p className="fig-label border-t-0 pt-0 mb-1">Retos y limitaciones de los LLM en la práctica clínica</p>
-            <p className="text-sm text-[#E6EDF3]">
-              Jose Miguel Armas <span className="text-[#1C2633]">&middot;</span> Luis Felipe Cadena
+            <p className="text-sm text-[#14161A]">
+              Jose Miguel Armas <span className="text-[#E4E4DE]">&middot;</span> Luis Felipe Cadena
             </p>
           </div>
-          <p className="text-sm text-[#2DD4BF] font-mono">Universidad Icesi, Cali</p>
+          <p className="text-sm text-[#0F766E] font-mono">Universidad Icesi, Cali</p>
         </div>
       </div>
     </div>

@@ -22,18 +22,18 @@ export const Section08: React.FC = () => {
       <SectionNumberMark index="08" className="absolute top-6 right-6 sm:right-10" />
 
       <div className="max-w-3xl">
-        <p className="font-mono text-[11px] text-[#7D8B99] mb-3">Conclusión estructural</p>
-        <h3 className="display-title text-[#E6EDF3]">Sin validación no hay uso seguro</h3>
+        <p className="font-mono text-[11px] text-[#5E646C] mb-3">Conclusión estructural</p>
+        <h3 className="display-title text-[#14161A]">Sin validación no hay uso seguro</h3>
       </div>
 
       <div className="mt-10 max-w-4xl">
         <FigureLabel fig="FIG. 08A" caption="5 requisitos no negociables" />
-        <ol className="mt-4 divide-y divide-[#1C2633]">
+        <ol className="mt-4 divide-y divide-[#E4E4DE]">
           {requirements.map((req) => (
             <li key={req.num} className="flex items-baseline gap-4 sm:gap-6 py-3.5">
-              <span className="font-mono text-sm text-[#2DD4BF] w-6 shrink-0">{req.num}</span>
-              <span className="text-[#E6EDF3]">
-                <strong>{req.title}.</strong> <span className="text-[#7D8B99]">{req.desc}</span>
+              <span className="font-mono text-sm text-[#0F766E] w-6 shrink-0">{req.num}</span>
+              <span className="text-[#14161A]">
+                <strong>{req.title}.</strong> <span className="text-[#5E646C]">{req.desc}</span>
               </span>
             </li>
           ))}
@@ -44,10 +44,10 @@ export const Section08: React.FC = () => {
         <FigureLabel fig="FIG. 08B" caption="Responsabilidad compartida" />
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-4">
           {stakeholders.map((s, i) => (
-            <div key={s.role} className="border-l-2 border-[#1C2633] pl-4">
-              <span className="font-mono text-xs text-[#7D8B99]">0{i + 1}</span>
-              <h5 className="font-display font-bold text-[#E6EDF3] mt-1">{s.role}</h5>
-              <p className="text-sm text-[#7D8B99] mt-1">{s.action}</p>
+            <div key={s.role} className="border-l-2 border-[#E4E4DE] pl-4">
+              <span className="font-mono text-xs text-[#5E646C]">0{i + 1}</span>
+              <h5 className="font-display font-bold text-[#14161A] mt-1">{s.role}</h5>
+              <p className="text-sm text-[#5E646C] mt-1">{s.action}</p>
             </div>
           ))}
         </div>

@@ -156,14 +156,14 @@ export default function TowerSim({ active, reducedMotion, onCaptureKeys }: SimSl
       }
 
       // Clear Canvas
-      ctx.fillStyle = "#0E141C";
+      ctx.fillStyle = "#FFFFFF";
       ctx.fillRect(0, 0, width, height);
 
       // Draw Layers
       ctx.lineWidth = 2;
       for (let i = 0; i < layerPositions.length; i++) {
         const ly = layerPositions[i];
-        ctx.strokeStyle = "#1C2633";
+        ctx.strokeStyle = "#E4E4DE";
         ctx.setLineDash([6, 6]);
         ctx.beginPath();
         ctx.moveTo(30, ly);
@@ -172,7 +172,7 @@ export default function TowerSim({ active, reducedMotion, onCaptureKeys }: SimSl
         ctx.setLineDash([]);
 
         // Layer Label
-        ctx.fillStyle = "#7D8B99";
+        ctx.fillStyle = "#5E646C";
         ctx.font = "10px JetBrains Mono, monospace";
         ctx.fillText(`CAPA VALIDADORA 0${i + 1} (Filtro LLM)`, 35, ly - 6);
       }
@@ -228,13 +228,13 @@ export default function TowerSim({ active, reducedMotion, onCaptureKeys }: SimSl
           ctx.globalAlpha = Math.max(0, p.alpha);
           if (p.isError) {
             // Coral for error
-            ctx.fillStyle = p.status === "caught" ? "#F5B544" : "#FF5A5F";
-            ctx.shadowColor = "#FF5A5F";
+            ctx.fillStyle = p.status === "caught" ? "#B45309" : "#C2410C";
+            ctx.shadowColor = "#C2410C";
             ctx.shadowBlur = p.status === "passed" ? 8 : 4;
           } else {
             // Teal for verified
-            ctx.fillStyle = "#2DD4BF";
-            ctx.shadowColor = "#2DD4BF";
+            ctx.fillStyle = "#0F766E";
+            ctx.shadowColor = "#0F766E";
             ctx.shadowBlur = 4;
           }
 
@@ -259,58 +259,58 @@ export default function TowerSim({ active, reducedMotion, onCaptureKeys }: SimSl
     <div
       data-testid="tower-sim-slot"
       data-active={active}
-      className="w-full max-w-5xl mx-auto rounded-sm border border-[#1C2633] bg-[#0E141C] p-6 flex flex-col gap-6"
+      className="w-full max-w-5xl mx-auto rounded-sm border border-[#E4E4DE] bg-[#FFFFFF] p-6 flex flex-col gap-6"
     >
       {/* Top Banner / Metrics */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pb-4 border-b border-[#1C2633]">
-        <div className="p-3 rounded-sm bg-[#070A0F] border border-[#1C2633]">
-          <span className="font-mono text-[11px] text-[#7D8B99] uppercase block">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pb-4 border-b border-[#E4E4DE]">
+        <div className="p-3 rounded-sm bg-[#FAFAF7] border border-[#E4E4DE]">
+          <span className="font-mono text-[11px] text-[#5E646C] uppercase block">
             PRECISIÓN CONTEXTUAL
           </span>
           <span
             data-testid="accuracy-metric"
-            className="text-2xl font-bold font-mono text-[#2DD4BF]"
+            className="text-2xl font-bold font-mono text-[#0F766E]"
           >
             {stats.accuracy}%
           </span>
         </div>
 
-        <div className="p-3 rounded-sm bg-[#070A0F] border border-[#1C2633]">
-          <span className="font-mono text-[11px] text-[#7D8B99] uppercase block">
+        <div className="p-3 rounded-sm bg-[#FAFAF7] border border-[#E4E4DE]">
+          <span className="font-mono text-[11px] text-[#5E646C] uppercase block">
             SI FUERAN INDEPENDIENTES
           </span>
-          <span className="text-2xl font-bold font-mono text-[#7D8B99]">
+          <span className="text-2xl font-bold font-mono text-[#5E646C]">
             {stats.independentAccuracy}%
           </span>
         </div>
 
-        <div className="p-3 rounded-sm bg-[#070A0F] border border-[#1C2633]">
-          <span className="font-mono text-[11px] text-[#7D8B99] uppercase block">
+        <div className="p-3 rounded-sm bg-[#FAFAF7] border border-[#E4E4DE]">
+          <span className="font-mono text-[11px] text-[#5E646C] uppercase block">
             ERRORES FILTRADOS
           </span>
-          <span className="text-2xl font-bold font-mono text-[#FF5A5F]">
+          <span className="text-2xl font-bold font-mono text-[#C2410C]">
             {stats.errorsPassed}
           </span>
         </div>
 
-        <div className="p-3 rounded-sm bg-[#070A0F] border border-[#1C2633]">
-          <span className="font-mono text-[11px] text-[#7D8B99] uppercase block">
+        <div className="p-3 rounded-sm bg-[#FAFAF7] border border-[#E4E4DE]">
+          <span className="font-mono text-[11px] text-[#5E646C] uppercase block">
             RENDIMIENTO CANVAS
           </span>
           <span
             data-testid="fps-metric"
-            className="text-2xl font-bold font-mono text-[#2DD4BF]"
+            className="text-2xl font-bold font-mono text-[#0F766E]"
           >
-            {stats.fps} <span className="text-xs text-[#7D8B99]">FPS</span>
+            {stats.fps} <span className="text-xs text-[#5E646C]">FPS</span>
           </span>
         </div>
       </div>
 
       {/* Canvas 2D simulation viewport */}
-      <div className="relative w-full h-[360px] rounded-sm overflow-hidden border border-[#1C2633] bg-[#0E141C]">
+      <div className="relative w-full h-[360px] rounded-sm overflow-hidden border border-[#E4E4DE] bg-[#FFFFFF]">
         <canvas ref={canvasRef} className="w-full h-full block" />
         {correlation > 0.6 && (
-          <div className="absolute bottom-4 left-4 right-4 p-3 rounded bg-[#070A0F]/90 border border-[#FF5A5F]/50 text-xs font-mono text-[#FF5A5F] flex items-center justify-between">
+          <div className="absolute bottom-4 left-4 right-4 p-3 rounded bg-[#FAFAF7]/90 border border-[#C2410C]/50 text-xs font-mono text-[#C2410C] flex items-center justify-between">
             <span>⚠ ALTA CORRELACIÓN: Las capas comparten los mismos sesgos. Agregar capas apenas mejora la seguridad clínica.</span>
           </div>
         )}
@@ -320,8 +320,8 @@ export default function TowerSim({ active, reducedMotion, onCaptureKeys }: SimSl
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
         <div>
           <div className="flex justify-between text-xs font-mono mb-1.5">
-            <span className="text-[#7D8B99]">NÚMERO DE CAPAS:</span>
-            <span className="text-[#2DD4BF] font-bold">{layers}</span>
+            <span className="text-[#5E646C]">NÚMERO DE CAPAS:</span>
+            <span className="text-[#0F766E] font-bold">{layers}</span>
           </div>
           <input
             type="range"
@@ -333,14 +333,14 @@ export default function TowerSim({ active, reducedMotion, onCaptureKeys }: SimSl
             onBlur={handleSliderBlur}
             onChange={(e) => setLayers(Number(e.target.value))}
             aria-label="Número de capas validadoras"
-            className="w-full accent-[#2DD4BF] cursor-pointer"
+            className="w-full accent-[#0F766E] cursor-pointer"
           />
         </div>
 
         <div>
           <div className="flex justify-between text-xs font-mono mb-1.5">
-            <span className="text-[#7D8B99]">TASA DE ERROR INTRÍNSECO:</span>
-            <span className="text-[#FF5A5F] font-bold">{(errorRate * 100).toFixed(0)}%</span>
+            <span className="text-[#5E646C]">TASA DE ERROR INTRÍNSECO:</span>
+            <span className="text-[#C2410C] font-bold">{(errorRate * 100).toFixed(0)}%</span>
           </div>
           <input
             type="range"
@@ -352,14 +352,14 @@ export default function TowerSim({ active, reducedMotion, onCaptureKeys }: SimSl
             onBlur={handleSliderBlur}
             onChange={(e) => setErrorRate(Number(e.target.value))}
             aria-label="Tasa de error intrínseco por capa"
-            className="w-full accent-[#FF5A5F] cursor-pointer"
+            className="w-full accent-[#C2410C] cursor-pointer"
           />
         </div>
 
         <div>
           <div className="flex justify-between text-xs font-mono mb-1.5">
-            <span className="text-[#7D8B99]">CORRELACIÓN DE ERROR:</span>
-            <span className="text-[#F5B544] font-bold">{(correlation * 100).toFixed(0)}%</span>
+            <span className="text-[#5E646C]">CORRELACIÓN DE ERROR:</span>
+            <span className="text-[#B45309] font-bold">{(correlation * 100).toFixed(0)}%</span>
           </div>
           <input
             type="range"
@@ -371,7 +371,7 @@ export default function TowerSim({ active, reducedMotion, onCaptureKeys }: SimSl
             onBlur={handleSliderBlur}
             onChange={(e) => setCorrelation(Number(e.target.value))}
             aria-label="Correlación de error entre capas"
-            className="w-full accent-[#F5B544] cursor-pointer"
+            className="w-full accent-[#B45309] cursor-pointer"
           />
         </div>
       </div>

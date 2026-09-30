@@ -97,46 +97,46 @@ export default function ParrotSim({ active, reducedMotion, onCaptureKeys }: SimS
     <div
       data-testid="parrot-sim-slot"
       data-active={active}
-      className="w-full max-w-5xl mx-auto rounded-sm border border-[#1C2633] bg-[#0E141C] p-6 flex flex-col gap-6"
+      className="w-full max-w-5xl mx-auto rounded-sm border border-[#E4E4DE] bg-[#FFFFFF] p-6 flex flex-col gap-6"
     >
       {/* Header and Case Tag */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-[#1C2633]">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-[#E4E4DE]">
         <div>
-          <span className="font-mono text-xs text-[#2DD4BF] uppercase tracking-wider block">
+          <span className="font-mono text-xs text-[#0F766E] uppercase tracking-wider block">
             GENERACIÓN TOKEN POR TOKEN // LLM SAMPLING
           </span>
-          <h4 className="text-lg font-bold font-display text-[#E6EDF3] mt-0.5">
+          <h4 className="text-lg font-bold font-display text-[#14161A] mt-0.5">
             {parrotData.meta.title}
           </h4>
         </div>
-        <span className="font-mono text-xs text-[#F5B544]">
+        <span className="font-mono text-xs text-[#B45309]">
           {parrotData.meta.disclaimer}
         </span>
       </div>
 
       {/* Generated Clinical Text Box */}
-      <div className="relative min-h-[120px] p-5 rounded-sm bg-[#070A0F] border border-[#1C2633] font-body text-base text-[#E6EDF3] leading-relaxed flex flex-col justify-between">
+      <div className="relative min-h-[120px] p-5 rounded-sm bg-[#FAFAF7] border border-[#E4E4DE] font-body text-base text-[#14161A] leading-relaxed flex flex-col justify-between">
         <p>
           {history.map((tok, i) => (
             <span
               key={i}
               className={`transition-colors ${
                 i === history.length - 1
-                  ? "bg-[#2DD4BF]/20 text-[#2DD4BF] font-semibold px-1 rounded"
+                  ? "bg-[#0F766E]/20 text-[#0F766E] font-semibold px-1 rounded"
                   : ""
               }`}
             >
               {tok}
             </span>
           ))}
-          <span className="inline-block w-2 h-4 bg-[#2DD4BF] animate-pulse ml-1 align-middle" />
+          <span className="inline-block w-2 h-4 bg-[#0F766E] animate-pulse ml-1 align-middle" />
         </p>
 
         {/* Danger Stamp on False Path */}
         {hasFalseStamp && (
           <div
             data-testid="false-stamp"
-            className="absolute top-4 right-4 z-20 px-4 py-2 rounded-sm bg-[#FF5A5F]/20 border-2 border-[#FF5A5F] text-[#FF5A5F] font-mono font-bold text-xs uppercase flex items-center gap-2 rotate-[-2deg] animate-bounce"
+            className="absolute top-4 right-4 z-20 px-4 py-2 rounded-sm bg-[#C2410C]/20 border-2 border-[#C2410C] text-[#C2410C] font-mono font-bold text-xs uppercase flex items-center gap-2 rotate-[-2deg] animate-bounce"
           >
             <AlertOctagon className="w-4 h-4 shrink-0" />
             <span>NADIE VERIFICÓ ESTO</span>
@@ -147,10 +147,10 @@ export default function ParrotSim({ active, reducedMotion, onCaptureKeys }: SimS
       {/* Next Token Candidates & Probability Bars */}
       <div>
         <div className="flex items-center justify-between mb-3">
-          <span className="font-mono text-xs text-[#7D8B99] uppercase">
+          <span className="font-mono text-xs text-[#5E646C] uppercase">
             DISTRIBUCIÓN DE PROBABILIDAD DEL SIGUIENTE TOKEN P(w_t | w_1...t-1)
           </span>
-          <span className="font-mono text-xs text-[#2DD4BF]">
+          <span className="font-mono text-xs text-[#0F766E]">
             {weightedCandidates.length ? "Selecciona un candidato o usa Auto-play" : "Fin de la rama"}
           </span>
         </div>
@@ -164,19 +164,19 @@ export default function ParrotSim({ active, reducedMotion, onCaptureKeys }: SimS
                 type="button"
                 data-testid={`candidate-btn-${idx}`}
                 onClick={() => selectCandidate(cand)}
-                className="group relative text-left p-3.5 rounded-sm bg-[#070A0F] border border-[#1C2633] hover:border-[#2DD4BF] transition-all overflow-hidden cursor-pointer"
+                className="group relative text-left p-3.5 rounded-sm bg-[#FAFAF7] border border-[#E4E4DE] hover:border-[#0F766E] transition-all overflow-hidden cursor-pointer"
               >
                 {/* Background probability fill */}
                 <div
-                  className="absolute inset-y-0 left-0 bg-[#2DD4BF]/10 group-hover:bg-[#2DD4BF]/20 transition-all"
+                  className="absolute inset-y-0 left-0 bg-[#0F766E]/10 group-hover:bg-[#0F766E]/20 transition-all"
                   style={{ width: `${percent}%` }}
                 />
 
                 <div className="relative z-10 flex items-center justify-between gap-4">
-                  <span className="text-sm text-[#E6EDF3] group-hover:text-white font-medium">
+                  <span className="text-sm text-[#14161A] group-hover:text-white font-medium">
                     {cand.token}
                   </span>
-                  <span className="font-mono text-xs font-bold text-[#2DD4BF] shrink-0">
+                  <span className="font-mono text-xs font-bold text-[#0F766E] shrink-0">
                     {percent}%
                   </span>
                 </div>
@@ -187,12 +187,12 @@ export default function ParrotSim({ active, reducedMotion, onCaptureKeys }: SimS
       </div>
 
       {/* Bottom Controls: Temperature Slider, Auto-play, Reset */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-[#1C2633] items-center">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-[#E4E4DE] items-center">
         {/* Temperature Slider */}
         <div className="md:col-span-2 flex flex-col gap-1.5">
           <div className="flex items-center justify-between text-xs font-mono">
-            <span className="text-[#7D8B99]">TEMPERATURA (SOFTMAX T):</span>
-            <span data-testid="temp-value" className="text-[#2DD4BF] font-bold">
+            <span className="text-[#5E646C]">TEMPERATURA (SOFTMAX T):</span>
+            <span data-testid="temp-value" className="text-[#0F766E] font-bold">
               {temperature.toFixed(2)}
             </span>
           </div>
@@ -206,9 +206,9 @@ export default function ParrotSim({ active, reducedMotion, onCaptureKeys }: SimS
             onBlur={() => onCaptureKeys?.(false)}
             onChange={(e) => setTemperature(Number(e.target.value))}
             aria-label="Temperatura Softmax"
-            className="w-full accent-[#2DD4BF] cursor-pointer"
+            className="w-full accent-[#0F766E] cursor-pointer"
           />
-          <div className="flex justify-between text-[10px] font-mono text-[#7D8B99]">
+          <div className="flex justify-between text-[10px] font-mono text-[#5E646C]">
             <span>0.1 (Determinista)</span>
             <span>1.0 (Distribución real)</span>
             <span>2.0 (Máxima entropía)</span>
@@ -221,7 +221,7 @@ export default function ParrotSim({ active, reducedMotion, onCaptureKeys }: SimS
             type="button"
             data-testid="autoplay-btn"
             onClick={() => setIsAutoPlay(!isAutoPlay)}
-            className="px-4 py-2 rounded-sm bg-[#1C2633] hover:bg-[#2DD4BF]/20 text-[#E6EDF3] hover:text-[#2DD4BF] font-mono text-xs font-bold transition-all flex items-center gap-2 border border-[#1C2633]"
+            className="px-4 py-2 rounded-sm bg-[#E4E4DE] hover:bg-[#0F766E]/20 text-[#14161A] hover:text-[#0F766E] font-mono text-xs font-bold transition-all flex items-center gap-2 border border-[#E4E4DE]"
           >
             {isAutoPlay ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
             <span>{isAutoPlay ? "Pausar" : "Auto-play"}</span>
@@ -231,7 +231,7 @@ export default function ParrotSim({ active, reducedMotion, onCaptureKeys }: SimS
             type="button"
             data-testid="reset-btn"
             onClick={handleReset}
-            className="px-4 py-2 rounded-sm bg-[#1C2633] hover:bg-[#FF5A5F]/20 text-[#E6EDF3] hover:text-[#FF5A5F] font-mono text-xs font-bold transition-all flex items-center gap-2 border border-[#1C2633]"
+            className="px-4 py-2 rounded-sm bg-[#E4E4DE] hover:bg-[#C2410C]/20 text-[#14161A] hover:text-[#C2410C] font-mono text-xs font-bold transition-all flex items-center gap-2 border border-[#E4E4DE]"
           >
             <RotateCcw className="w-3.5 h-3.5" />
             <span>Reiniciar</span>

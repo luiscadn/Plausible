@@ -42,7 +42,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#070A0F",
+  themeColor: "#FAFAF7",
 };
 
 export default function RootLayout({
@@ -53,9 +53,10 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} dark`}
+      style={{ colorScheme: "light" }}
+      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="min-h-screen bg-[#070A0F] text-[#E6EDF3] antialiased selection:bg-[#2DD4BF]/20 selection:text-[#2DD4BF] bg-grain">
+      <body className="min-h-screen bg-[#FAFAF7] text-[#14161A] antialiased selection:bg-[#0F766E]/20 selection:text-[#0F766E] bg-grain">
         {children}
       </body>
     </html>

@@ -156,15 +156,15 @@ export default function PresentationPage() {
   return (
     <div
       ref={containerRef}
-      className="w-full h-screen overflow-y-scroll snap-y snap-mandatory bg-[#070A0F] text-[#E6EDF3] relative"
+      className="w-full h-screen overflow-y-scroll snap-y snap-mandatory bg-[#FAFAF7] text-[#14161A] relative"
     >
       {/* Fixed Monitor Status Bar */}
-      <header className="fixed top-0 left-0 right-0 z-50 px-6 sm:px-8 h-14 flex items-center justify-between bg-[#070A0F]/90 backdrop-blur-md border-b border-[#1C2633]">
-        <span className="font-mono text-[11px] tracking-wider text-[#7D8B99] uppercase">
-          Plausible <span className="text-[#2DD4BF]">/</span> Icesi 2026
+      <header className="fixed top-0 left-0 right-0 z-50 px-6 sm:px-8 h-14 flex items-center justify-between bg-[#FAFAF7]/90 backdrop-blur-md border-b border-[#E4E4DE]">
+        <span className="font-mono text-[11px] tracking-wider text-[#5E646C] uppercase">
+          Plausible <span className="text-[#0F766E]">/</span> Icesi 2026
         </span>
-        <span className="font-mono text-[11px] text-[#7D8B99]">
-          {activeSection} <span className="text-[#1C2633]">/</span> 09
+        <span className="font-mono text-[11px] text-[#5E646C]">
+          {activeSection} <span className="text-[#E4E4DE]">/</span> 09
         </span>
       </header>
 
@@ -191,7 +191,7 @@ export default function PresentationPage() {
             caveat="Caso ilustrativo, no es consejo médico"
             title="Fluidez ≠ fiabilidad"
           />
-          <p className="text-lg text-[#7D8B99] max-w-2xl -mt-2">
+          <p className="text-lg text-[#5E646C] max-w-2xl -mt-2">
             Experimento en vivo. La audiencia vota: &iquest;eligió por lo que dice la respuesta, o por cómo suena?
           </p>
           <div className="w-full flex-1 flex items-center">
@@ -252,34 +252,38 @@ export default function PresentationPage() {
       <section
         id="sec-05"
         data-section-id="05"
-        className="w-full min-h-[100dvh] snap-start flex flex-col p-3 sm:p-10 lg:p-14 pt-20 sm:pt-28 relative overflow-y-auto overflow-x-hidden"
+        className="w-full h-[100dvh] snap-start flex flex-col p-3 sm:p-8 lg:p-10 pt-20 sm:pt-24 relative overflow-y-auto overflow-x-hidden"
       >
-        <div className="w-full max-w-[1400px] mx-auto flex flex-col gap-5 flex-1">
-          <SectionHeader
-            index="05"
-            caveat="Caso ilustrativo, no es consejo médico"
-            title="El sesgo persiste, y es opaco"
-          />
-          <p className="text-lg text-[#7D8B99] max-w-2xl -mt-2">
-            Más capas ayudan, solo si no comparten los mismos errores.
-          </p>
-          <div className="w-full flex-1 flex items-center">
-            <TowerSim
-              active={activeSection === "05"}
-              reducedMotion={reducedMotion}
-              onCaptureKeys={setCapturingKeys}
+        <div className="w-full max-w-[1440px] mx-auto xl:pr-16 grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-8 lg:gap-12 flex-1 min-h-0">
+          <div className="flex flex-col gap-4 min-h-0">
+            <SectionHeader
+              index="05"
+              caveat="Caso ilustrativo, no es consejo médico"
+              title="El sesgo persiste, y es opaco"
             />
+            <p className="text-lg text-[#5E646C] max-w-2xl -mt-2">
+              Más capas ayudan, solo si no comparten los mismos errores.
+            </p>
+            <div className="w-full flex-1 flex items-center min-h-0">
+              <TowerSim
+                active={activeSection === "05"}
+                reducedMotion={reducedMotion}
+                onCaptureKeys={setCapturingKeys}
+              />
+            </div>
           </div>
-          <div>
-            <FigureLabel fig="FIG. 05" caption="Propagación y correlación de error entre capas validadoras" />
-            <WhatsHappening>
-              Cada capa de validación hereda el{" "}
-              <GlossaryTerm term="sesgo" definition={GLOSSARY.sesgo}>sesgo</GlossaryTerm> de la anterior y puede
-              amplificarlo. Más capas no eliminan el error si está{" "}
-              <GlossaryTerm term="correlación de errores" definition={GLOSSARY["correlación de errores"]}>correlacionado</GlossaryTerm> entre ellas.
-            </WhatsHappening>
+          <div className="flex flex-col justify-center gap-8">
+            <div>
+              <FigureLabel fig="FIG. 05" caption="Propagación y correlación de error entre capas validadoras" />
+              <WhatsHappening>
+                Cada capa de validación hereda el{" "}
+                <GlossaryTerm term="sesgo" definition={GLOSSARY.sesgo}>sesgo</GlossaryTerm> de la anterior y puede
+                amplificarlo. Más capas no eliminan el error si está{" "}
+                <GlossaryTerm term="correlación de errores" definition={GLOSSARY["correlación de errores"]}>correlacionado</GlossaryTerm> entre ellas.
+              </WhatsHappening>
+            </div>
+            <SolutionsTable />
           </div>
-          <SolutionsTable />
         </div>
       </section>
 

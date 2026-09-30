@@ -10,19 +10,19 @@ const STEPS = ["Texto", "Tokens", "Probabilidades", "Siguiente palabra"];
 export const TokenDiagram: React.FC = () => {
   return (
     <div
-      className="flex items-center gap-2 sm:gap-3 font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#7D8B99] overflow-x-auto"
+      className="flex items-center gap-2 sm:gap-3 font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#5E646C] overflow-x-auto"
       aria-hidden="true"
     >
       {STEPS.map((step, i) => (
         <React.Fragment key={step}>
           <span
             className={`whitespace-nowrap px-2 py-1 border ${
-              i === STEPS.length - 1 ? "border-[#2DD4BF] text-[#2DD4BF]" : "border-[#1C2633]"
+              i === STEPS.length - 1 ? "border-[#0F766E] text-[#0F766E]" : "border-[#E4E4DE]"
             }`}
           >
             {step}
           </span>
-          {i < STEPS.length - 1 && <span className="text-[#1C2633]">&#8594;</span>}
+          {i < STEPS.length - 1 && <span className="text-[#E4E4DE]">&#8594;</span>}
         </React.Fragment>
       ))}
     </div>

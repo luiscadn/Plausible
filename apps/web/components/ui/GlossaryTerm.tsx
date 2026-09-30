@@ -36,7 +36,7 @@ export const GlossaryTerm: React.FC<GlossaryTermProps> = ({ term, definition, ch
     >
       {children ?? term}
       <span role="tooltip" id={tooltipId} className="glossary-tooltip">
-        <strong className="text-[#2DD4BF]">{term}: </strong>
+        <strong className="text-[#0F766E]">{term}: </strong>
         {definition}
       </span>
     </span>

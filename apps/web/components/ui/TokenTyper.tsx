@@ -48,7 +48,7 @@ export const TokenTyper: React.FC<TokenTyperProps> = ({
   return (
     <span className={className}>
       {shown}
-      {!done && <span className="type-caret text-[#2DD4BF]">|</span>}
+      {!done && <span className="type-caret text-[#0F766E]">|</span>}
     </span>
   );
 };

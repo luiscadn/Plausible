@@ -13,7 +13,7 @@ interface FigureLabelProps {
 export const FigureLabel: React.FC<FigureLabelProps> = ({ fig, caption, className = "" }) => {
   return (
     <span className={`fig-label ${className}`}>
-      {fig} <span className="text-[#2DD4BF]">-</span> {caption}
+      {fig} <span className="text-[#0F766E]">-</span> {caption}
     </span>
   );
 };

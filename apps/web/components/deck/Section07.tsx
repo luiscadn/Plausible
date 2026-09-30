@@ -22,29 +22,29 @@ export const Section07: React.FC = () => {
       <SectionNumberMark index="07" className="absolute top-6 right-6 sm:right-10" />
 
       <div className="max-w-3xl">
-        <p className="font-mono text-[11px] text-[#7D8B99] mb-3">Lu et al., JAMIA 2024</p>
-        <h3 className="display-title text-[#E6EDF3]">Apoyar, no reemplazar</h3>
+        <p className="font-mono text-[11px] text-[#5E646C] mb-3">Lu et al., JAMIA 2024</p>
+        <h3 className="display-title text-[#14161A]">Apoyar, no reemplazar</h3>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 mt-10 max-w-5xl divide-y divide-[#1C2633] md:divide-y-0">
-        <div className="divide-y divide-[#1C2633]">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 mt-10 max-w-5xl divide-y divide-[#E4E4DE] md:divide-y-0">
+        <div className="divide-y divide-[#E4E4DE]">
           {SI.map((item) => (
             <div key={item.title} className="flex items-start gap-4 py-4">
-              <Check className="w-6 h-6 text-[#2DD4BF] shrink-0 mt-0.5" strokeWidth={2.5} />
-              <p className="text-[#E6EDF3]">
+              <Check className="w-6 h-6 text-[#0F766E] shrink-0 mt-0.5" strokeWidth={2.5} />
+              <p className="text-[#14161A]">
                 <strong className="text-lg">{item.title}.</strong>{" "}
-                <span className="text-[#7D8B99]">{item.body}</span>
+                <span className="text-[#5E646C]">{item.body}</span>
               </p>
             </div>
           ))}
         </div>
-        <div className="divide-y divide-[#1C2633]">
+        <div className="divide-y divide-[#E4E4DE]">
           {NO.map((item) => (
             <div key={item.title} className="flex items-start gap-4 py-4">
-              <X className="w-6 h-6 text-[#FF5A5F] shrink-0 mt-0.5" strokeWidth={2.5} />
-              <p className="text-[#E6EDF3]">
+              <X className="w-6 h-6 text-[#C2410C] shrink-0 mt-0.5" strokeWidth={2.5} />
+              <p className="text-[#14161A]">
                 <strong className="text-lg">{item.title}.</strong>{" "}
-                <span className="text-[#7D8B99]">{item.body}</span>
+                <span className="text-[#5E646C]">{item.body}</span>
               </p>
             </div>
           ))}

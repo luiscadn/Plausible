@@ -18,11 +18,11 @@ export const Section06: React.FC = () => {
       <SectionNumberMark index="06" className="absolute top-6 right-6 sm:right-10" />
 
       <div className="max-w-3xl">
-        <p className="font-mono text-[11px] text-[#F5B544] mb-3">Bélisle-Pipon, 2024</p>
-        <h3 className="display-title text-[#E6EDF3]">
+        <p className="font-mono text-[11px] text-[#B45309] mb-3">Bélisle-Pipon, 2024</p>
+        <h3 className="display-title text-[#14161A]">
           La desregulación traslada el riesgo al médico
         </h3>
-        <p className="text-lg text-[#7D8B99] mt-4 max-w-2xl">
+        <p className="text-lg text-[#5E646C] mt-4 max-w-2xl">
           El software llega con descargo legal (&laquo;no es consejo médico&raquo;), y el personal de salud queda
           obligado a auditar manualmente cada afirmación.
         </p>
@@ -36,28 +36,28 @@ export const Section06: React.FC = () => {
               <div className="flex flex-col items-start gap-2" style={{ height: "100%" }}>
                 <div className="flex-1 flex items-end">
                   <div
-                    className={`w-2 measure-bar ${i === NODES.length - 1 ? "bg-[#FF5A5F]" : "bg-[#1C2633]"}`}
+                    className={`w-2 measure-bar ${i === NODES.length - 1 ? "bg-[#C2410C]" : "bg-[#E4E4DE]"}`}
                     style={{ height: `${node.weight * 100}%` }}
                   />
                 </div>
                 <span
                   className={`font-mono text-xs sm:text-sm uppercase tracking-wide ${
-                    i === NODES.length - 1 ? "text-[#FF5A5F] font-bold" : "text-[#7D8B99]"
+                    i === NODES.length - 1 ? "text-[#C2410C] font-bold" : "text-[#5E646C]"
                   }`}
                 >
                   {node.label}
                 </span>
               </div>
               {i < NODES.length - 1 && (
-                <span className="text-[#1C2633] mb-6" aria-hidden="true">&#8594;</span>
+                <span className="text-[#E4E4DE] mb-6" aria-hidden="true">&#8594;</span>
               )}
             </React.Fragment>
           ))}
         </div>
       </div>
 
-      <div className="mt-12 max-w-3xl border-t border-[#1C2633] pt-6">
-        <label className="font-mono text-xs text-[#7D8B99] block mb-2">
+      <div className="mt-12 max-w-3xl border-t border-[#E4E4DE] pt-6">
+        <label className="font-mono text-xs text-[#5E646C] block mb-2">
           Complejidad del caso: {extraChecks} fuentes cruzadas &rarr; +{(extraChecks * 3.5).toFixed(1)} min de
           verificación por consulta
         </label>
@@ -67,7 +67,7 @@ export const Section06: React.FC = () => {
           max="8"
           value={extraChecks}
           onChange={(e) => setExtraChecks(Number(e.target.value))}
-          className="w-full max-w-md accent-[#2DD4BF] cursor-pointer"
+          className="w-full max-w-md accent-[#0F766E] cursor-pointer"
         />
       </div>
     </div>

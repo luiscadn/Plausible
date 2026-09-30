@@ -40,14 +40,14 @@ export const ProgressRail: React.FC<ProgressRailProps> = ({ activeSection, secti
           >
             <span
               className={`text-right transition-opacity ${
-                isActive ? "opacity-100 text-[#2DD4BF]" : "opacity-0 group-hover:opacity-70 text-[#7D8B99]"
+                isActive ? "opacity-100 text-[#0F766E]" : "opacity-0 group-hover:opacity-70 text-[#5E646C]"
               }`}
             >
               {IDEA_LABELS[id]}
             </span>
             <span
               className={`h-px transition-all ${
-                isActive ? "w-8 bg-[#2DD4BF]" : "w-3 bg-[#1C2633] group-hover:bg-[#7D8B99]"
+                isActive ? "w-8 bg-[#0F766E]" : "w-3 bg-[#E4E4DE] group-hover:bg-[#5E646C]"
               }`}
             />
           </button>

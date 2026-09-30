@@ -12,9 +12,9 @@ export const EcgDivider: React.FC<EcgDividerProps> = ({
   height = 32,
 }) => {
   const colorMap = {
-    truth: "#2DD4BF",
-    muted: "#7D8B99",
-    false: "#FF5A5F",
+    truth: "#0F766E",
+    muted: "#5E646C",
+    false: "#C2410C",
   };
 
   const strokeColor = colorMap[variant] || colorMap.truth;
@@ -39,7 +39,7 @@ export const EcgDivider: React.FC<EcgDividerProps> = ({
           y1="20"
           x2="600"
           y2="20"
-          stroke="#1C2633"
+          stroke="#E4E4DE"
           strokeWidth="1.5"
           strokeDasharray="4 4"
         />
