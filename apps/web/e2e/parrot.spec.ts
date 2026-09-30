@@ -55,7 +55,7 @@ test.describe("W2 Parrot Sim Gate: Token-by-token, Softmax Temperature & False S
     // Click reset button
     const resetBtn = page.locator('[data-testid="reset-btn"]');
     await resetBtn.scrollIntoViewIfNeeded();
-    await resetBtn.click({ force: true });
+    await resetBtn.dispatchEvent("click");
     await page.waitForTimeout(200);
 
     // Stamp should be gone and root token restored

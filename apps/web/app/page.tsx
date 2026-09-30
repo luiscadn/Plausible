@@ -164,7 +164,7 @@ export default function PresentationPage() {
           Plausible <span className="text-[#0F766E]">/</span> Icesi 2026
         </span>
         <span className="font-mono text-[11px] text-[#5E646C]">
-          {activeSection} <span className="text-[#E4E4DE]">/</span> 09
+          SECCIÓN {activeSection} <span className="text-[#E4E4DE]">/</span> 09
         </span>
       </header>
 
